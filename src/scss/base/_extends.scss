@@ -1,0 +1,38 @@
+%card-perfil {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    padding: 1.8rem 1.6rem 1.2rem;
+    box-sizing: border-box;
+    
+    .cor {
+        background-color: $cor-3;
+        width: 4.6rem;
+        height: 4.6rem;
+        border-radius: 50%;
+    }
+}
+
+%barra-de-rolagem {
+    ::-webkit-scrollbar { width: .75rem;}
+    ::-ms-scrollbar { width: .75rem; }
+    ::-moz-scrollbar {  width: .75rem; }
+    ::-webkit-scrollbar-track { background-color: $cor-5; }
+    ::-moz-scrollbar-track { background-color: $cor-5; }
+    ::-ms-scrollbar-track { background-color: $cor-5; }
+
+    ::-webkit-scrollbar-thumb {
+        background-color: $cor-1;
+        border-radius: .35rem;
+    }
+    ::-moz-scrollbar-thumb {
+        background-color: $cor-1;
+        border-radius: .35rem;
+    }
+
+    ::-ms-scrollbar-thumb {
+        background-color: $cor-1;
+        border-radius: .35rem;
+    }
+}
