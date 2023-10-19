@@ -1,0 +1,14 @@
+{
+  "name": "chat-online",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "scss": "node-sass src/scss -o public/style/ --output-style compressed -w *scss"
+  },
+  "author": "MBrayanS",
+  "license": "MIT",
+  "dependencies": {
+    "node-sass": "^9.0.0"
+  }
+}
