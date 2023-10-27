@@ -1,0 +1,164 @@
+.aba-conversa {
+    @extend %barra-de-rolagem;
+
+    background-color: $cor-7;
+    width: 70%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: max-content 1fr max-content ;
+    position: relative;
+    border-left: .1rem solid $cor-2;
+
+    .perfil {
+        @extend %card-perfil;
+
+        background-color: $cor-5;
+        height: 7.6rem;
+        width: 100%;
+        position: relative;
+        top: 0;
+
+        .voltar {
+            background-color: transparent;
+            border: none;
+            border-radius: 50%;
+            padding: 1rem;
+
+            cursor: pointer;
+            
+            &:hover { background-color: change-color($cor-2, $alpha: .1) }
+            
+            img {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+        
+        .nome { font-size: 2.2rem; }
+    }
+
+    .mensagens {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: .4rem;
+        padding: 2.5rem 3rem;
+        overflow-y: scroll;
+
+        .mensagem {
+            position: relative;
+            max-width: 75%;
+            min-width: 5rem;
+            padding: 1.2rem 1.2rem 3rem;
+            border-radius: .8rem;
+
+            .texto {
+                width: 100%;
+                word-wrap: break-word;
+                line-height: 2.2rem;
+                font-size: 1.6rem;
+            }
+    
+            .hora {
+                position: absolute;
+                right: 1.2rem;
+                bottom: 1.2rem;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+        }
+
+        .mensagem-primeira {
+            border-radius: 0 .8rem .8rem .8rem;
+
+            &::after {
+                content: '';
+                position: absolute;
+                width: 0;
+                height: 0;
+                top: -.8rem;
+                border-top: 1.2rem solid transparent;
+                border-bottom: 1.2rem solid transparent;
+                border-right: 1.2rem solid $cor-1;
+                transform: rotate(135deg);
+            }
+        }
+
+        .mensagem-primeira.mensagem--esquerda::after { left: -1rem; }
+
+        .mensagem-primeira.mensagem--direita {
+            border-radius: .8rem 0 .8rem .8rem;
+
+            &::after {
+                border-right: 1.2rem solid $cor-5;
+                right: -1rem;
+                transform: rotate(45deg);
+            }
+        }
+
+        .mensagem--direita:has( + .mensagem--esquerda ),
+        .mensagem--esquerda:has( + .mensagem--direita ) {
+            margin-bottom: 1.6rem;
+        }
+
+        .mensagem--esquerda { background-color: $cor-1; } 
+
+        .mensagem--direita {
+            background-color: $cor-5;
+            margin-left: auto;
+        }
+    }
+
+    .barra-de-mensagem {
+        background-color: $cor-5;
+        width: 100%;
+        height: 7.4rem;
+        display: flex;
+        justify-content: center;
+        gap: 1.4rem;
+        padding: 1.2rem 2.4rem;
+
+        .input-de-mensagem {
+            color: $cor-2;
+            background-color: $cor-4;
+            width: 100%;
+            height: 5rem;
+            padding: 1.4rem 2rem;
+            border: none;
+            outline: none;
+            border-radius: .8rem;
+            font-size: 1.8rem;
+
+
+            &::placeholder { color: $cor-3; }
+        }
+ 
+        .btn-mandar-mensagem {
+            background-color: $cor-1;
+            width: 8.4rem;
+            height: 4.6rem;
+            display: grid;
+            justify-content: center;
+            justify-items: center;
+            align-items: center;
+            outline: none;
+            border: none;
+            border-radius: .8rem;
+            font-size: 1.8rem;
+            cursor: pointer;
+
+            &:hover { background-color: darken($cor-1, $amount: 10); }
+            &:active {
+                background-color: darken($cor-1, $amount: 1);
+                transform: translateY(.1rem);
+            }
+
+            img {
+                width: 75%;
+                height: 75%;
+            }
+        }
+    }
+}
+
