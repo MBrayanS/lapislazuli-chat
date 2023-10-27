@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="/public/scripts/main.js" defer></script>
-    <link rel="stylesheet" href="/public/style/style.css">
+    <script src="scripts/main.js" defer></script>
+    <link rel="stylesheet" href="style/style.css">
     <title>Chat Online</title>
 </head>
 <body>
@@ -30,83 +30,69 @@
                     <p class="nome">Nome do usuario</p>
                 </div>
 
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
-                <div class="contato">
-                    <div class="cor"></div>
-                    <p class="nome">Nome do usuario</p>
-                </div>
-
             </div>
-            
-
+ 
             <button class="btn-adicionar"></button>
         </div>
 
-        <div class = "aba-conversa"></div>
+        <div class="aba-conversa">
+            <div class="perfil">
+                <button class="voltar">
+                    <img src="img/seta.svg" alt="">
+                </button>
+                <div class="cor"></div>
+                <p class="nome">Nome do usuario</p>
+            </div>
+
+            <div class="mensagens">
+
+                <div class="mensagem mensagem--esquerda mensagem-primeira">
+                    <p class="texto">Bom dia bem</p>
+                    <time class="hora">8:24</time>
+                </div>
+
+                <div class="mensagem mensagem--esquerda">
+                    <p class="texto">Tudo bem com vc?</p>
+                    <time class="hora">8:24</time>
+                </div>
+
+                <div class="mensagem mensagem--direita mensagem-primeira">
+                    <p class="texto">Bom dia</p>
+                    <time class="hora">8:30</time>
+                </div>
+
+                <div class="mensagem mensagem--direita">
+                    <p class="texto">Tudo, e com vc?</p>
+                    <time class="hora">8:30</time>
+                </div>
+
+                <div class="mensagem mensagem--esquerda">
+                    <p class="texto">Vou bem sim.</p>
+                    <time class="hora">9:00</time>
+                </div>
+
+                <div class="mensagem mensagem--direita mensagem-primeira">
+                    <p class="texto">Que ótimo</p>
+                    <time class="hora">9:02</time>
+                </div>
+
+                <div class="mensagem mensagem--direita">
+                    <p class="texto">Como posso ajudar</p>
+                    <time class="hora">9:02</time>
+                </div>
+
+                <div class="mensagem mensagem--direita">
+                    <p class="texto">?</p>
+                    <time class="hora">9:02</time>
+                </div>
+
+            </div>
+
+            <form class="barra-de-mensagem">
+                <input placeholder="Digite uma mensagem..." name="" class="input-de-mensagem">
+                <button class="btn-mandar-mensagem"><img src = "img/seta.svg"></button>
+            </form>
+        </div>
 
     </main>
 </body>
