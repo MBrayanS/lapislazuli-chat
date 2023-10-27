@@ -25,7 +25,6 @@
         outline: none;
         padding: .8rem 2rem;
         font-size: 1.6rem;
-        box-sizing: border-box;
         
         &::placeholder { color: $cor-3; }
     }
@@ -38,7 +37,6 @@
         gap: .8rem;
         padding-bottom: 2rem;
         overflow-y: scroll;
-        box-sizing: border-box;
 
         .contato {
             @extend %card-perfil;
