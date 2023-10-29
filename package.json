@@ -4,16 +4,17 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "dev": "nodemon server.js -w *js",
+    "dev": "nodemon server.js --ext js,ejs,css",
     "scss": "node-sass src/scss -o public/style/ --output-style compressed -w *scss"
   },
   "author": "MBrayanS",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "node-sass": "^9.0.0"
+    "ejs": "^3.1.9",
+    "express": "^4.18.2"
   },
   "devDependencies": {
+    "node-sass": "^9.0.0",
     "nodemon": "^3.0.1"
   }
 }
