@@ -35,3 +35,93 @@
         border-radius: .35rem;
     }
 }
+
+%formulario {
+    background: radial-gradient($gradiente);
+    display: grid;
+    align-items: center;
+    width: 100vw;
+    min-height: 100vh;
+    
+    .formulario {
+        background-color: $cor-6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .8rem;
+        margin: 0 auto;
+        padding: 6rem 7.2rem 6rem;
+
+        .titulo {
+            color: $cor-2;
+            margin-bottom: 3.2rem;
+            font-size: 3.2rem;
+            text-transform: uppercase;
+        }
+        
+        form {
+            display: grid;
+            gap: 1.6rem;
+    
+            label, input {
+                font-size: 1.8rem;
+            }
+    
+            label {
+                display: grid;
+                gap: 1rem;
+    
+                input {
+                    color: $cor-8;
+                    background-color: $cor-2;
+                    width: 28.8rem;
+                    outline: none;
+                    border: none;
+                    border-radius: .6rem;
+                    padding: .4rem .8rem;
+                }
+            }
+
+            .enviar {
+                color: #fff;
+                background-color: $cor-1;
+                width: 100%;
+                margin-top: 6.4rem;
+                padding: 1.2rem 0;
+                border: none;
+                border-radius: .8rem;
+                text-align: center;
+                font-size: 2.6rem;
+                cursor: pointer;
+
+                &:hover { background-color: darken($cor-1, $amount: 10); }
+
+                &:active {
+                    background-color: darken($cor-1, $amount: 1);
+                    transform: translateY(.1rem);
+                }
+            }
+
+        }
+
+        p, a {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        p { margin-top: 2.4rem; }
+
+        a {
+            color: $cor-1;
+            text-decoration: none;
+        }
+
+        .cadastre-se { font-size: 1.6rem; }
+    }
+
+    @media screen {
+        @media ( max-width: $ponto-de-quebra-650 ) { .formulario { width: 100%; } }
+    }
+}

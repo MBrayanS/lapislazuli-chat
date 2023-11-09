@@ -1,0 +1,6 @@
+@import 'base/variaveis';
+@import 'base/extends';
+
+.confirmar-email {
+    @extend %formulario;
+}

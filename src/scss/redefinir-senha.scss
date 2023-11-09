@@ -1,0 +1,6 @@
+@import 'base/variaveis';
+@import 'base/extends';
+
+.redefinir-senha {
+    @extend %formulario;
+}
