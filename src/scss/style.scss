@@ -6,8 +6,8 @@
     height: max-content;
     margin: 0;
     padding: 0;
-    font-size: 10px;
     box-sizing: border-box;
+    
 }
 
 body, html {
@@ -15,6 +15,8 @@ body, html {
     height: 100%;
     max-height: 100vh;
     font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    font-size: 10px;
     overflow: hidden;
 }
 
