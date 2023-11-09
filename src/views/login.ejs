@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('./componentes/head') %>
+    <link rel="stylesheet" href="/style/login.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <section class="login">
+        <div class="formulario">
+
+            <h1 class="titulo">Login</h1>
+
+            <form>
+    
+                <label for="loginNome"> Nome: 
+                    <input type="text" id="loginNome" name="loginNome" placeholder="Insira seu nome" minlength="3" required>
+                </label>
+    
+                <label for="loginSenha"> Senha:
+                    <input type="password" id="loginSenha" name="loginSenha" placeholder="Insira sua senha" minlength="8" required>
+                    <a href="redefinirSenha">Esqueceu sua senha?</a>
+                </label>
+    
+                <button class="enviar" type="submit">Logar</button>
+    
+            </form>
+    
+            <p>Não tem uma conta?</p>
+            <a class="cadastre-se" href="cadastrar">Cadastre-se</a>
+
+        </div>
+
+    </section>
+</body>
+
+</html>

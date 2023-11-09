@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('./componentes/head') %>
+    <link rel="stylesheet" href="/style/cadastrar.css">
+    <title>Cadastrar</title>
+</head>
+
+<body>
+    <section class="cadastrar">
+
+        <div class="formulario">
+            <h1 class="titulo">Cadastrar</h1>
+
+            <form>
+                <label for="nome">Nome:
+                    <input type="text" id="nome" name="nome" required placeholder="Insira seu nome">
+                </label>
+
+                <label for="email">Email:
+                    <input type="email" id="email" name="email" required placeholder="Insira seu email">
+                </label>
+
+                <label for="senha">Senha
+                    <input type="password" id="senha" name="senha" required minlength="8" required placeholder="Insira sua senha">
+                </label>
+
+                <button class="enviar">Cadastrar</button>
+            </form>
+
+            <p>Não tem uma conta?</p>
+            <a class="cadastre-se" href="login">Faça login</a>
+        </div>
+
+    </section>
+</body>
+
+</html>
