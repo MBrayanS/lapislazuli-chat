@@ -8,6 +8,7 @@
     display: grid;
     grid-template-rows: max-content max-content 1fr;
     position: relative;
+    transition: all 1s;
 
     .perfil {
         @extend %card-perfil;
@@ -87,5 +88,16 @@
         &:after { transform: translate(-50%, -50%) rotate(90deg); }
         &:hover { background-color: darken($cor-1, $amount: 10); }
         &:active { transform: translateY(.1rem); }
+    }
+
+    @media ( max-width: $ponto-de-quebra-1000 ) {
+        width: auto;
+        max-width: 100vw;
+        min-width: 40rem;
+        position: absolute;
+        left: 0;
+        z-index: 1;
+
+        &.aba-contatos--invisivel { left: -100%; }
     }
 }

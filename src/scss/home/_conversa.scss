@@ -130,7 +130,6 @@
             border-radius: .8rem;
             font-size: 1.8rem;
 
-
             &::placeholder { color: $cor-3; }
         }
  
@@ -160,5 +159,9 @@
             }
         }
     }
-}
 
+    @media ( max-width: $ponto-de-quebra-1000 ) {
+        width: 100vw;
+        border: none;
+    }
+}
