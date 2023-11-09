@@ -18,6 +18,16 @@ body, html {
     font-weight: 500;
     font-size: 10px;
     overflow: hidden;
+
+    @media screen {
+        @media ( max-width: $ponto-de-quebra-650 ) { font-size: 9px; }
+        @media ( max-width: $ponto-de-quebra-400 ) { font-size: 7px; }
+        @media ( max-width: $ponto-de-quebra-300 ) { font-size: 2vw; }
+        
+        @media ( max-height: $ponto-de-quebra-650 ) and ( max-width: $ponto-de-quebra-1000 ) { font-size: 7px; }
+        @media ( max-height: $ponto-de-quebra-500 ) and ( max-width: $ponto-de-quebra-1000 ) { font-size: 6px; }
+        @media ( max-height: $ponto-de-quebra-400 ) and ( max-width: $ponto-de-quebra-1000 ) { font-size: 5px; }
+    }
 }
 
 main {
