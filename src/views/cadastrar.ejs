@@ -16,18 +16,22 @@
 
             <form>
                 <label for="nome">Nome:
-                    <input type="text" id="nome" name="nome" required placeholder="Insira seu nome">
+                    <input type="text" id="nome" name="nome" required minlength="3" placeholder="Insira seu nome" maxlength="20" title="Nome de usuário deve ter entre 3 e 20 caracteres">
                 </label>
 
                 <label for="email">Email:
-                    <input type="email" id="email" name="email" required placeholder="Insira seu email">
+                    <input type="email" id="email" name="email" required placeholder="Insira seu email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$" title="Por favor, insira um e-mail válido">
                 </label>
 
-                <label for="senha">Senha
-                    <input type="password" id="senha" name="senha" required minlength="8" required placeholder="Insira sua senha">
+                <label for="senha">Senha:
+                    <input type="password" id="senha" name="senha" required minlength="8" placeholder="Insira sua senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Por favor, escolha uma senha com no mínimo 8 caracteres, incluindo letras, números e caracteres especiais. Tornará sua senha mais segura!">
                 </label>
 
-                <button class="enviar">Cadastrar</button>
+                <label for="senha">Confirmar Senha:
+                    <input type="password" id="confirmarSenha" name="senha" required minlength="8" placeholder="Insira sua senha" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$" title="Por favor, escolha uma senha com no mínimo 8 caracteres, incluindo letras, números e caracteres especiais. Tornará sua senha mais segura!">
+                </label>
+
+                <button type="submit" class="enviar">Cadastrar</button>
             </form>
 
             <p>Não tem uma conta?</p>
