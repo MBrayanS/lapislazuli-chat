@@ -70,3 +70,6 @@
 
 ### REVERT:
   > indica a reverão de um commit anterior.
+
+### SETUP:
+  > usado para alterar a organização de pastas e arquivos.
