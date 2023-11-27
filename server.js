@@ -1,6 +1,6 @@
 const { server } = require('./socket.io')
 const app = require('./app')
-const rotas = require('./src/rotas')
+const rotas = require('./src/routes/rotas')
 const PORT = 3000
 
 rotas(app)

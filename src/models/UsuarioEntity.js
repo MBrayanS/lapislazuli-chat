@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/sequelize");
 
-const Usuario = sequelize.define('Usuario', {
+const UsuarioEntity = sequelize.define('Usuario', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4(),
@@ -27,4 +27,4 @@ const Usuario = sequelize.define('Usuario', {
     }
 })
 
-module.exports = Usuario
+module.exports = UsuarioEntity

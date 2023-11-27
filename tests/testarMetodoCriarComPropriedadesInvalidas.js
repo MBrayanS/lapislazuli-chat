@@ -1,8 +1,8 @@
-module.exports = function testarMetodoCriarComPropriedadesInvalidas( Model, dadosCorretos, dadosInvalidos, finalDaMensagem ) {
+module.exports = function testarMetodoCriarComPropriedadesInvalidas( Service, dadosCorretos, dadosInvalidos, finalDaMensagem ) {
     return Object.entries(dadosInvalidos).map( async ([ propriedade, valorInvalido ]) => {
         const dadosComErro = { ...dadosCorretos, [propriedade]: valorInvalido }
 
-        await expect( async () => await Model.criar(dadosComErro) )
+        await expect( async () => await Service.criar(dadosComErro) )
         .rejects.toThrow(`A propriedade ${propriedade} ${finalDaMensagem}`)
     })
 }

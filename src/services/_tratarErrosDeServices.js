@@ -1,4 +1,4 @@
-module.exports = function tratarErroDeModel( erro ) {
+module.exports = function tratarErrosDeServices( erro ) {
     if( typeof erro == 'string' ) throw new Error(erro)
     
     if( erro.message == 'WHERE parameter "id" has invalid "undefined" value' ) throw new Error('A propriedade id não pode ter valor undefined')

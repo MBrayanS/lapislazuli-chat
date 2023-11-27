@@ -1,21 +1,25 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/sequelize");
 
-const Grupo = sequelize.define('Grupo', {
+const MensagemEntity = sequelize.define('Mensagem', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4(),
         primaryKey: true,
         allowNull: false
     },
-    nome: {
+    texto: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    descricao: {
-        type: DataTypes.STRING,
-        allowNull: false,
+    usuario_id: {
+        type: DataTypes.UUID,
+        allowNull: false
+    },
+    canal_id: {
+        type: DataTypes.UUID,
+        allowNull: false
     }
 })
 
-module.exports = Grupo
+module.exports = MensagemEntity

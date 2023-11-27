@@ -1,25 +1,33 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/sequelize");
 
-const Mensagem = sequelize.define('Mensagem', {
+const ContatoEntity = sequelize.define('Contato', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4(),
         primaryKey: true,
         allowNull: false
     },
-    texto: {
+    nome: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    usuario_id: {
+    destinatario_id: {
         type: DataTypes.UUID,
         allowNull: false
     },
-    canal_id: {
+    ultima_interacao: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    },
+    ultima_mensagem: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW
+    },
+    usuario_id: {
         type: DataTypes.UUID,
         allowNull: false
     }
 })
 
-module.exports = Mensagem
+module.exports = ContatoEntity

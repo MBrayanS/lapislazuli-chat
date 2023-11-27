@@ -1,10 +1,10 @@
 const sequelize = require("./sequelize");
 
-const Contato = require('../entities/Contato')
-const Grupo = require('../entities/Grupo')
-const Membro = require('../entities/Membro')
-const Mensagem = require('../entities/Mensagem')
-const Usuario = require('../entities/Contato')
+const ContatoEntity = require('../models/ContatoEntity')
+const GrupoEntity = require('../models/GrupoEntity')
+const MembroEntity = require('../models/MembroEntity')
+const MensagemEntity = require('../models/MensagemEntity')
+const UsuarioEntity = require('../models/ContatoEntity')
 
 module.exports = async () => {
     await sequelize.sync({ force: true })

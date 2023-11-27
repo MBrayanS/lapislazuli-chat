@@ -1,19 +1,11 @@
 const { DataTypes } = require("sequelize");
 const sequelize = require("../database/sequelize");
 
-const Contato = sequelize.define('Contato', {
+const MembroEntity = sequelize.define('Membro', {
     id: {
         type: DataTypes.UUID,
         defaultValue: DataTypes.UUIDV4(),
         primaryKey: true,
-        allowNull: false
-    },
-    nome: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    destinatario_id: {
-        type: DataTypes.UUID,
         allowNull: false
     },
     ultima_interacao: {
@@ -27,7 +19,11 @@ const Contato = sequelize.define('Contato', {
     usuario_id: {
         type: DataTypes.UUID,
         allowNull: false
+    },
+    grupo_id: {
+        type: DataTypes.UUID,
+        allowNull: false
     }
 })
 
-module.exports = Contato
+module.exports = MembroEntity
