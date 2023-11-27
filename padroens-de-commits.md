@@ -73,3 +73,9 @@
 
 ### SETUP:
   > usado para alterar a organização de pastas e arquivos.
+
+### MERGE: branch_A para branch_B
+  > marca um merge feito entre duas branchs
+
+### PR: #n contribuidor - branch
+  > usado em pull request. E nas descrição deve conter o título do commit enviado pelo contribuidor
