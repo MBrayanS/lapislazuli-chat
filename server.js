@@ -1,8 +1,13 @@
 const { server } = require('./socket.io')
-const app = require('./app')
-const rotas = require('./src/routes/rotas')
 const PORT = 3000
 
-rotas(app)
+const conectarBancoDeDados = require('./src/database/conectarBancoDeDados')
 
-server.listen(PORT, () => console.log('No ar na porta ' + PORT))
+conectarBancoDeDados()
+    .then( () => {
+        server.listen(PORT, () => console.log('No ar na porta ' + PORT)) 
+    })
+    
+    .catch( erro => {
+        console.log('Erro ao conectar banco de dados! \n', erro)
+    })
