@@ -1,7 +1,7 @@
 const UsuarioEntity = require('../models/UsuarioEntity')
 const tratarErrosDeServices = require('./_tratarErrosDeServices')
 
-function UsuarioModel () {
+function UsuarioService () {
     async function criar( dadosDoUsuario ) {
         try { return await UsuarioEntity.create(dadosDoUsuario) } 
         
@@ -37,4 +37,4 @@ function UsuarioModel () {
     }
 }
 
-module.exports = UsuarioModel()
+module.exports = UsuarioService()
