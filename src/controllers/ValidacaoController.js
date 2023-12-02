@@ -1,3 +1,6 @@
+const ErroCustomizado = require('../Errors/ErroCustomizado')
+const middlewareDeErros = require('../Errors/middlewareDeErros')
+
 const Joi = require("joi")
 
 function ValidacaoController() {
@@ -24,16 +27,11 @@ function ValidacaoController() {
             const dadosDeCadastro = req.body
             const { error } = schema.validate(dadosDeCadastro, options)
 
-            if( error ) throw { status: 400, erro: error.message }
-
+            if( error ) throw new ErroCustomizado(400, error.message)
             next()
         }
         
-        catch( excecao ) {
-            if( excecao.status ) return res.status(excecao.status).json({ erro: excecao.erro })
-
-           res.status(500).send(erro)
-        }
+        catch( erro ) { middlewareDeErros(erro, res) }
     }
 
     return {
