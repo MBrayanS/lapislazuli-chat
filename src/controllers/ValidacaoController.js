@@ -20,8 +20,12 @@ function ValidacaoController() {
                 nome: Joi.string().min(3).max(20).required(),
                 email: Joi.string().email().required(),
                 senha: Joi.string().min(8).max(20).pattern(/^(?=.*\d)(?=.*[!@#$%^&*])/)
-                .message({ 'string.pattern.base': 'A senha deve conter pelo menos um número e um caractere especial' })
-                .required()
+                    .message({ 'string.pattern.base': 'A senha deve conter pelo menos um número e um caractere especial' })
+                    .required(),
+                cor: Joi.alternatives().try( 
+                        Joi.string().pattern(/^#([0-9A-Fa-f]{3}){1,2}$/),
+                        Joi.string().pattern(/^rgb\(\s*\d+\s*,\s*\d+\s*,\s*\d+\s*\)$/)
+                    ).messages({ 'alternatives.match': 'Este valor para cor não é suportado' }).required()
             })
             
             const dadosDeCadastro = req.body
