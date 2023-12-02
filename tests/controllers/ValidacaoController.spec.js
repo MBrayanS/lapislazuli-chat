@@ -25,7 +25,8 @@ describe('Testes do controller ValidacaoController', () => {
 
         await ValidacaoController.cadastrar( req, res, next )
 
-        expect(res.json).toHaveBeenCalledWith({ erro: 'O campo email não esta valido' })
+        expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo email não esta valido' })
+        expect(res.status).toHaveBeenCalledWith(400)
     })
 
     it('Senha invalida', async () => {
@@ -33,7 +34,8 @@ describe('Testes do controller ValidacaoController', () => {
 
         await ValidacaoController.cadastrar( req, res, next )
 
-        expect(res.json).toHaveBeenCalledWith({ erro: 'A senha deve conter pelo menos um número e um caractere especial' })
+        expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'A senha deve conter pelo menos um número e um caractere especial' })
+        expect(res.status).toHaveBeenCalledWith(400)
     })
     
     describe('Erros gerais', () => {
@@ -43,7 +45,7 @@ describe('Testes do controller ValidacaoController', () => {
 
             await ValidacaoController.cadastrar( req, res, next )
 
-            expect(res.json).toHaveBeenCalledWith({ erro: 'O campo \"nome\" deve ser uma string' })
+            expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo \"nome\" deve ser uma string' })
             expect(res.status).toHaveBeenCalledWith(400)
         })
 
@@ -52,7 +54,7 @@ describe('Testes do controller ValidacaoController', () => {
 
             await ValidacaoController.cadastrar( req, res, next )
 
-            expect(res.json).toHaveBeenCalledWith({ erro: 'O campo \"nome\" é obrigatório' })
+            expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo \"nome\" é obrigatório' })
             expect(res.status).toHaveBeenCalledWith(400)
         })
 
@@ -61,7 +63,7 @@ describe('Testes do controller ValidacaoController', () => {
 
             await ValidacaoController.cadastrar( req, res, next )
 
-            expect(res.json).toHaveBeenCalledWith({ erro: 'O campo \"nome\" deve ter pelo menos 3 caracteres' })
+            expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo \"nome\" deve ter pelo menos 3 caracteres' })
             expect(res.status).toHaveBeenCalledWith(400)
         })
 
@@ -70,7 +72,7 @@ describe('Testes do controller ValidacaoController', () => {
 
             await ValidacaoController.cadastrar( req, res, next )
 
-            expect(res.json).toHaveBeenCalledWith({ erro: 'O campo \"nome\" não pode ter mais de 20 caracteres' })
+            expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo \"nome\" não pode ter mais de 20 caracteres' })
             expect(res.status).toHaveBeenCalledWith(400)
         })
 
