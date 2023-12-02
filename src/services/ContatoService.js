@@ -1,5 +1,5 @@
 const ContatoEntity = require('../models/ContatoEntity')
-const tratarErrosDeServices = require('./_tratarErrosDeServices')
+const tratarErrosDeServices = require('../Errors/tratarErrosDeServices')
 
 function ContatoService () {
     async function criar({ nome, usuario_id, destinatario_id, ultima_interacao, ultima_mensagem }) {
