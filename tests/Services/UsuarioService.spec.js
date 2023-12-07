@@ -77,6 +77,25 @@ describe('Testes do model UsuarioService', () => {
 
     })
 
+    describe('Pegar usuario por email e senha', () => {
+
+        it('Pegar com sucesso', async () => {
+            const novoUsuario = await UsuarioService.criar(dadosDoUsuario)
+            const usuarioSalvo = await UsuarioService.pegarPorEmailESenha(dadosDoUsuario.email, dadosDoUsuario.senha)
+    
+            expect(usuarioSalvo.id).toEqual(novoUsuario.id)
+    
+            await UsuarioEntity.destroy({ where: { email: dadosDoUsuario.email } })
+        })
+
+        it('Usuario não encontrado', async () => {
+            const funcaoComErro = async () => await UsuarioService.pegarPorEmailESenha('teste', 'teste')
+    
+            expect(funcaoComErro).rejects.toThrow('Usuario não encontrado')
+        })
+
+    })
+
     describe('Apagar usuario', () => {
         
         it('Apagar com sucesso', async () => {
