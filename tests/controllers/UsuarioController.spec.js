@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const ErroCustomizado = require('../../src/errors/ErroCustomizado')
 
 const UsuarioController = require("../../src/controllers/UsuarioController")
@@ -39,8 +41,12 @@ describe('Testes do controller UsuarioController', () => {
         it('Erro inesperado', async () => {
             const mockUsuarioService = { criar: () =>  uu + 5 }
             const usuarioController = UsuarioController(mockUsuarioService)
-    
+
+            process.env.LOG_DE_ERROS = 'false'
+
             await usuarioController.cadastrar(req, res)
+
+            process.env.LOG_DE_ERROS = 'true'
         
             expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'Erro interno do servidor' })
             expect(res.status).toHaveBeenCalledWith(500)
