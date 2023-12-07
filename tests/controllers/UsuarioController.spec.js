@@ -4,7 +4,11 @@ const ErroCustomizado = require('../../src/errors/ErroCustomizado')
 
 const UsuarioController = require("../../src/controllers/UsuarioController")
 
-const mockUsuarioService = { criar: jest.fn().mockReturnValue({ id: undefined }) }
+const mockUsuarioService = {
+    criar: jest.fn().mockReturnValue({ id: undefined }),
+    pegarPorEmailESenha: jest.fn().mockReturnValue({ id: undefined })
+}
+
 const mockCookieParser = { enviarCookie: jest.fn() }
 const mockAutenticacaoJWT = { criarToken: jest.fn() }
 
@@ -28,6 +32,15 @@ describe('Testes do controller UsuarioController', () => {
     
         expect(res.sendStatus).toHaveBeenCalledWith(201)
     })
+    
+    it('Logar usuário com sucesso', async () => {
+        req.body = dadosDeCadastro
+
+        await usuarioController.logar(req, res)
+
+        expect(res.sendStatus).toHaveBeenCalledWith(200)
+    })
+
     describe('Tratamento de erros', () => {
         
         it('Erro esperado', async () => {
