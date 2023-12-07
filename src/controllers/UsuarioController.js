@@ -1,11 +1,13 @@
 const middlewareDeErros = require("../errors/middlewareDeErros")
 
-function UsuarioController( UsuarioService ) {
+function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
     async function cadastrar( req, res ) {
         try {
             const dadosDeCadastro = req.body
-            
-            await UsuarioService.criar(dadosDeCadastro)
+            const { id } = await UsuarioService.criar(dadosDeCadastro)
+            const token = AutenticacaoJWT.criarToken(id)
+
+            CookieParser.enviarCookie(token, res)
 
             res.sendStatus(201)
         }
