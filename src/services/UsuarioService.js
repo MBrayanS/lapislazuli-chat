@@ -20,6 +20,18 @@ function UsuarioService () {
         catch( erro ) { tratarErrosDeServices(erro) }
     }
 
+    async function pegarPorEmailESenha( email, senha ) {
+        try {
+            const usuarioSalvo =  await UsuarioEntity.findOne({ where: { email, senha } })
+
+            if ( !usuarioSalvo ) throw 'Usuario não encontrado'
+
+            return usuarioSalvo
+        } 
+        
+        catch( erro ) { tratarErrosDeServices(erro) }
+    }
+
     async function apagar( id ) {
         try { 
             const resposta = await UsuarioEntity.destroy({ where: { id } }) 
@@ -33,6 +45,7 @@ function UsuarioService () {
     return {
         criar,
         pegarPorId,
+        pegarPorEmailESenha,
         apagar
     }
 }
