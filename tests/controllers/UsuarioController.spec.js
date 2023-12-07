@@ -15,15 +15,14 @@ const dadosDeCadastro = {
 
 describe('Testes do controller UsuarioController', () => {
     
-    it('Cadastrar usuario com sucesso', async () => {
+    it('Cadastrar usuário com sucesso', async () => {
         req.body = dadosDeCadastro
     
         await usuarioController.cadastrar(req, res)
     
         expect(res.sendStatus).toHaveBeenCalledWith(201)
     })
-
-    describe('Captura de erro', () => {
+    describe('Tratamento de erros', () => {
         
         it('Erro esperado', async () => {
             const erro = new ErroCustomizado(400, 'O campo email é obrigatório')

@@ -13,6 +13,7 @@ let grupoTeste
 const dadosDaMensagem = { texto: 'Essa é uma mensagem de teste.' }
 
 describe('Testes do service MensagemService', () => {
+
     beforeAll( async () => {
         usuarioTeste = await UsuarioService.criar({ nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste', cor: '#fff' })
         grupoTeste = await GrupoService.criar({ nome: 'Grupo teste', descricao: 'grupo teste e tals' })
@@ -22,6 +23,7 @@ describe('Testes do service MensagemService', () => {
     })
 
     describe('Criar nova mensagem', () => {
+
         it('Criar com sucesso', async () => {
             const novaMensagem = await MensagemService.criar(dadosDaMensagem)
     
@@ -51,9 +53,11 @@ describe('Testes do service MensagemService', () => {
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( MensagemService, dadosDaMensagem, dadosInvalidos, finalDaMensagem ) )
         })
+
     })
     
     describe('Pegar mensagem', () => {
+
         it('Pegar com sucesso', async () => {
             const novaMensagem = await MensagemService.criar(dadosDaMensagem)
             const mensagemSalva = await MensagemService.pegarPorId(novaMensagem.id)
@@ -74,9 +78,11 @@ describe('Testes do service MensagemService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
         })
+
     })
     
     describe('Apagar mensagem', () => {
+
         it('Apagar com sucesso', async () => {
             const novaMensagem = await MensagemService.criar(dadosDaMensagem)
             const funcaoComErro = async () => await MensagemService.pegarPorId(novaMensagem.id)
@@ -91,6 +97,7 @@ describe('Testes do service MensagemService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('Essa mensagem não existe')
         })
+
     })
     
 
@@ -98,4 +105,5 @@ describe('Testes do service MensagemService', () => {
         await UsuarioService.apagar(usuarioTeste.id)
         await GrupoService.apagar(grupoTeste.id)
     })
+    
 })

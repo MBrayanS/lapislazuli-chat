@@ -4,10 +4,12 @@ const UsuarioService = require('../../src/services/UsuarioService')
 const testarMetodoCriarComPropriedadesInvalidas = require('../testarMetodoCriarComPropriedadesInvalidas')
 
 describe('Testes do model UsuarioService', () => {
+
     const dadosDoUsuario = { nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste', cor: '#fff' }
     const idFalso = '9b15b9dc-7ad6-4ef0-b8ef-b2f46178b7e3'
     
     describe('Criar novo usuario', () => {
+
         it('Criar com sucesso', async () => {
             const novoUsuario = await UsuarioService.criar(dadosDoUsuario)
     
@@ -41,9 +43,11 @@ describe('Testes do model UsuarioService', () => {
     
             await UsuarioEntity.destroy({ where: { email: dadosDoUsuario.email } })
         })
+
     })
 
-    describe('Pegar usuario', () => {
+    describe('Pegar usuario por id', () => {
+
         it('Pegar com sucesso', async () => {
             const novoUsuario = await UsuarioService.criar(dadosDoUsuario)
             const usuarioSalvo = await UsuarioService.pegarPorId(novoUsuario.id)
@@ -70,9 +74,11 @@ describe('Testes do model UsuarioService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
         })
+
     })
 
     describe('Apagar usuario', () => {
+        
         it('Apagar com sucesso', async () => {
             const novoUsuario = await UsuarioService.criar(dadosDoUsuario)
             const funcaoComErro = async () => await UsuarioService.pegarPorId(novoUsuario.id)
@@ -87,5 +93,7 @@ describe('Testes do model UsuarioService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('Esse usuario não existe')
         })
+
     })
+
 })

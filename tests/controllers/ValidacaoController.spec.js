@@ -13,7 +13,7 @@ const dadosDeCadastro = {
 
 describe('Testes do controller ValidacaoController', () => {
 
-    it('Sucesso', async () => {
+    it('Validar dados para cadastro com sucesso', async () => {
         req.body = dadosDeCadastro
 
         await ValidacaoController.cadastrar( req, res, next )
@@ -77,7 +77,7 @@ describe('Testes do controller ValidacaoController', () => {
             expect(res.status).toHaveBeenCalledWith(400)
         })
 
-        it('Tamanho maximo invalido', async () => {
+        it('Tamanho máximo invalido', async () => {
             req.body = { ...dadosDeCadastro, nome: 'Nome de usuario muito grande' }
 
             await ValidacaoController.cadastrar( req, res, next )

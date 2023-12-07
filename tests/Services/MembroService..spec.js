@@ -13,7 +13,9 @@ const dadosDoMembro = {
 }
 
 describe('Testes do service MembroService', () => {
+
     describe('Criar novo membro', () => {
+
         it('Criar com sucesso', async () => {
             const novoMembro = await MembroService.criar(dadosDoMembro)
     
@@ -47,9 +49,11 @@ describe('Testes do service MembroService', () => {
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( MembroService, dadosDoMembro, dadosInvalidos, finalDaMensagem ) )
         })
+
     })
     
     describe('Pegar membro', () => {
+
         it('Pegar com sucesso', async () => {
             const novoMembro = await MembroService.criar(dadosDoMembro)
             const mensagemSalva = await MembroService.pegarPorId(novoMembro.id)
@@ -76,9 +80,11 @@ describe('Testes do service MembroService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
         })
+
     })
     
     describe('Apagar membro', () => {
+
         it('Apagar com sucesso', async () => {
             const novoMembro = await MembroService.criar(dadosDoMembro)
             const funcaoComErro = async () => await MembroService.pegarPorId(novoMembro.id)
@@ -93,5 +99,7 @@ describe('Testes do service MembroService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('Esse membro não existe')
         })
+
     })
+    
 })

@@ -4,10 +4,12 @@ const GrupoService = require("../../src/services/GrupoService")
 const testarMetodoCriarComPropriedadesInvalidas = require('../testarMetodoCriarComPropriedadesInvalidas')
 
 describe('Testes do service GrupoService', () => {
+
     const dadosDoGrupo = { nome: 'Grupo teste', descricao: 'grupo teste e tals' }
     const idFalso = '9b15b9dc-7ad6-4ef0-b8ef-b2f46178b7e3'
 
     describe('Criar novo grupo', () => {
+
         it('Criar com sucesso', async () => {
             const novoGrupo = await GrupoService.criar(dadosDoGrupo)
     
@@ -29,9 +31,11 @@ describe('Testes do service GrupoService', () => {
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( GrupoService, dadosDoGrupo, dadosInvalidos, finalDaMensagem ) )
         })
+
     })
 
     describe('Pegar grupo', () => {
+
         it('Pegar com sucesso', async () => {
             const novoGrupo = await GrupoService.criar(dadosDoGrupo)
             const grupoSalvo = await GrupoService.pegarPorId(novoGrupo.id)
@@ -52,9 +56,11 @@ describe('Testes do service GrupoService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('As propriedades de ids devem ter o formato UUID')
         })
+
     })
 
     describe('Apagar grupo', () => {
+
         it('Apagar com sucesso', async () => {
             const novoGrupo = await GrupoService.criar(dadosDoGrupo)
             const funcaoComErro = async () => await GrupoService.pegarPorId(novoGrupo.id)
@@ -69,5 +75,7 @@ describe('Testes do service GrupoService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('Esse grupo não existe')
         })
+
     })
+    
 })

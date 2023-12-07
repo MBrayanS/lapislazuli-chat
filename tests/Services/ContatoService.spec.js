@@ -14,7 +14,9 @@ const dadosDoContato = {
 }
 
 describe('Testes do service ContatoService', () => {
+
     describe('Criar novo contato', () => {
+
         it('Criar com sucesso', async () => {
             const novoContato = await ContatoService.criar(dadosDoContato)
     
@@ -56,9 +58,11 @@ describe('Testes do service ContatoService', () => {
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( ContatoService, dadosDoContato, dadosInvalidos, finalDaMensagem ) )
         })
+        
     })
     
     describe('Pegar contato', () => {
+
         it('Pegar com sucesso', async () => {
             const novoContato = await ContatoService.criar(dadosDoContato)
             const mensagemSalva = await ContatoService.pegarPorId(novoContato.id)
@@ -85,9 +89,11 @@ describe('Testes do service ContatoService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
         })
+
     })
     
     describe('Apagar contato', () => {
+
         it('Apagar com sucesso', async () => {
             const novoContato = await ContatoService.criar(dadosDoContato)
             const funcaoComErro = async () => await ContatoService.pegarPorId(novoContato.id)
@@ -102,5 +108,7 @@ describe('Testes do service ContatoService', () => {
     
             await expect(funcaoComErro).rejects.toThrow('Esse contato não existe')
         })
+
     })
+
 })
