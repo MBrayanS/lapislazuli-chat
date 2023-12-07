@@ -3,10 +3,14 @@ require('dotenv').config()
 const ErroCustomizado = require('../../src/errors/ErroCustomizado')
 
 const UsuarioController = require("../../src/controllers/UsuarioController")
-const mockUsuarioService = { criar: jest.fn() }
-const usuarioController = UsuarioController(mockUsuarioService)
 
-const res = { status: jest.fn().mockReturnThis(), sendStatus: jest.fn(), json: jest.fn() }
+const mockUsuarioService = { criar: jest.fn().mockReturnValue({ id: undefined }) }
+const mockCookieParser = { enviarCookie: jest.fn() }
+const mockAutenticacaoJWT = { criarToken: jest.fn() }
+
+const usuarioController = UsuarioController(mockUsuarioService, mockCookieParser, mockAutenticacaoJWT)
+
+const res = { status: jest.fn().mockReturnThis(), sendStatus: jest.fn(), json: jest.fn(), cookie: jest.fn() }
 const req = { body: {} }
 
 const dadosDeCadastro = {
@@ -30,7 +34,7 @@ describe('Testes do controller UsuarioController', () => {
             const erro = new ErroCustomizado(400, 'O campo email é obrigatório')
     
             const mockUsuarioService = { criar: jest.fn().mockRejectedValue(erro) }
-            const usuarioController = UsuarioController(mockUsuarioService)
+            const usuarioController = UsuarioController(mockUsuarioService, mockCookieParser, mockAutenticacaoJWT)
     
             await usuarioController.cadastrar(req, res)
         
@@ -40,7 +44,7 @@ describe('Testes do controller UsuarioController', () => {
     
         it('Erro inesperado', async () => {
             const mockUsuarioService = { criar: () =>  uu + 5 }
-            const usuarioController = UsuarioController(mockUsuarioService)
+            const usuarioController = UsuarioController(mockUsuarioService, mockCookieParser, mockAutenticacaoJWT)
 
             process.env.LOG_DE_ERROS = 'false'
 
