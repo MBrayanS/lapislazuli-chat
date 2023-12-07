@@ -1,5 +1,5 @@
-const ErroCustomizado = require('../Errors/ErroCustomizado')
-const middlewareDeErros = require('../Errors/middlewareDeErros')
+const ErroCustomizado = require('../errors/ErroCustomizado')
+const middlewareDeErros = require('../errors/middlewareDeErros')
 
 const Joi = require("joi")
 

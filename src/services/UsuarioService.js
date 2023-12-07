@@ -1,5 +1,5 @@
 const UsuarioEntity = require('../models/UsuarioEntity')
-const tratarErrosDeServices = require('../Errors/tratarErrosDeServices')
+const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
 
 function UsuarioService () {
     async function criar( dadosDoUsuario ) {

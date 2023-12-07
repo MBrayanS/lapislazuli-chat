@@ -1,5 +1,5 @@
 const GrupoEntity = require('../models/GrupoEntity')
-const tratarErrosDeServices = require('../Errors/tratarErrosDeServices')
+const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
 
 function GrupoService() {
     async function criar( dadosDoGrupo ) {

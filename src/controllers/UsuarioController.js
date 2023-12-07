@@ -1,4 +1,4 @@
-const middlewareDeErros = require("../Errors/middlewareDeErros")
+const middlewareDeErros = require("../errors/middlewareDeErros")
 
 function UsuarioController( UsuarioService ) {
     async function cadastrar( req, res ) {

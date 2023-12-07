@@ -1,5 +1,5 @@
 const MembroEntity = require('../models/MembroEntity')
-const tratarErrosDeServices = require('../Errors/tratarErrosDeServices')
+const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
 
 function MembroService () {
     async function criar( dadosDoMembro ) {

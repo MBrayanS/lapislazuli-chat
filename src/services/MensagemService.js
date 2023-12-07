@@ -1,5 +1,5 @@
 const MensagemEntity = require('../models/MensagemEntity')
-const tratarErrosDeServices = require('../Errors/tratarErrosDeServices')
+const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
 
 function MensagemModel() {
     async function criar( dadosDaMensagem ) {

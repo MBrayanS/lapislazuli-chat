@@ -1,4 +1,4 @@
-const ErroCustomizado = require('../../src/Errors/ErroCustomizado')
+const ErroCustomizado = require('../../src/errors/ErroCustomizado')
 
 const UsuarioController = require("../../src/controllers/UsuarioController")
 const mockUsuarioService = { criar: jest.fn() }
