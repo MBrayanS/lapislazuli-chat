@@ -29,14 +29,14 @@ describe('Testes do service MembroService', () => {
             const dadosInvalidos = { ...dadosDoMembro, ultima_interacao: {} }
 
             await expect( async () => await MembroService.criar(dadosInvalidos) )
-            .rejects.toThrow('As propriedades de dadas devem ter o formato DATE')
+            .rejects.toThrow({ statusCode: 400, message: 'As propriedades de dadas devem ter o formato DATE' })
         })
 
         it('Erro com id invalido', async () => {
             const dadosInvalidos = { ...dadosDoMembro, usuario_id: {} }
 
             await expect( async () => await MembroService.criar(dadosInvalidos) )
-            .rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            .rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
     
         it('Erro com valores vazios', async () => {
@@ -66,19 +66,19 @@ describe('Testes do service MembroService', () => {
         it('Membro não encontrado', async () => {
             const funcaoComErro = async () => await MembroService.pegarPorId(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Membro não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Membro não encontrado' })
         })
     
         it('Erro de id com string invalida', async () => {
             const funcaoComErro = async () => await MembroService.pegarPorId('')
     
-            await expect(funcaoComErro).rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
     
         it('Erro de id com valor invalido', async () => {
             const funcaoComErro = async () => await MembroService.pegarPorId(undefined)
     
-            await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade id não pode ter valor undefined' })
         })
 
     })
@@ -91,13 +91,13 @@ describe('Testes do service MembroService', () => {
     
             await MembroService.apagar(novoMembro.id)
     
-            await expect(funcaoComErro).rejects.toThrow('Membro não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Membro não encontrado' })
         })
     
         it('Tentar apagar um membro que não existe', async () => {
             const funcaoComErro = async () => await MembroService.apagar(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Esse membro não existe')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Esse membro não existe' })
         })
 
     })

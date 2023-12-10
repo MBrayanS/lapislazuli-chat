@@ -37,14 +37,14 @@ describe('Testes do service MensagemService', () => {
             const dadosInvalidos = { ...dadosDaMensagem, texto: {} }
 
             await expect( async () => await MensagemService.criar(dadosInvalidos) )
-            .rejects.toThrow(`A propriedade texto não tem um valor valido`)
+            .rejects.toThrow({ statusCode: 400, message: 'A propriedade texto não tem um valor valido' })
         })
 
         it('Erro com id invalido', async () => {
             const dadosInvalidos = { ...dadosDaMensagem, usuario_id: {} }
 
             await expect( async () => await MensagemService.criar(dadosInvalidos) )
-            .rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            .rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
 
         it('Erro com valores vazios', async () => {
@@ -70,13 +70,13 @@ describe('Testes do service MensagemService', () => {
         it('Mensagem não encontrada', async () => {
             const funcaoComErro = async () => await MensagemService.pegarPorId(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Mensagem não encontrada')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Mensagem não encontrada' })
         })
     
         it('Erro de id com valor invalido', async () => {
             const funcaoComErro = async () => await UsuarioService.pegarPorId(undefined)
     
-            await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade id não pode ter valor undefined' })
         })
 
     })
@@ -89,13 +89,13 @@ describe('Testes do service MensagemService', () => {
     
             await MensagemService.apagar(novaMensagem.id)
     
-            await expect(funcaoComErro).rejects.toThrow('Mensagem não encontrada')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Mensagem não encontrada' })
         })
     
         it('Tentar apagar uma mensagem que não existe', async () => {
             const funcaoComErro = async () => await MensagemService.apagar(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Essa mensagem não existe')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Essa mensagem não existe' })
         })
 
     })

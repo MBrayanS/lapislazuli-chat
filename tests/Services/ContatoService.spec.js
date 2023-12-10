@@ -30,21 +30,21 @@ describe('Testes do service ContatoService', () => {
             const dadosInvalidos = { ...dadosDoContato, nome: {} }
 
             await expect( async () => await ContatoService.criar(dadosInvalidos) )
-            .rejects.toThrow('A propriedade nome não tem um valor valido')
+            .rejects.toThrow({ statusCode: 400, message: 'A propriedade nome não tem um valor valido' })
         })
 
         it('Erro com data invalida', async () => {
             const dadosInvalidos = { ...dadosDoContato, ultima_interacao: {} }
 
             await expect( async () => await ContatoService.criar(dadosInvalidos) )
-            .rejects.toThrow('As propriedades de dadas devem ter o formato DATE')
+            .rejects.toThrow({ statusCode: 400, message: 'As propriedades de dadas devem ter o formato DATE' })
         })
 
         it('Erro com id invalido', async () => {
             const dadosInvalidos = { ...dadosDoContato, usuario_id: {} }
 
             await expect( async () => await ContatoService.criar(dadosInvalidos) )
-            .rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            .rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
     
         it('Erro com valores vazios', async () => {
@@ -75,19 +75,19 @@ describe('Testes do service ContatoService', () => {
         it('Contato não encontrado', async () => {
             const funcaoComErro = async () => await ContatoService.pegarPorId(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Contato não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Contato não encontrado' })
         })
     
         it('Erro de id com string invalida', async () => {
             const funcaoComErro = async () => await ContatoService.pegarPorId('')
     
-            await expect(funcaoComErro).rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
     
         it('Erro de id com valor invalido', async () => {
             const funcaoComErro = async () => await ContatoService.pegarPorId(undefined)
     
-            await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade id não pode ter valor undefined' })
         })
 
     })
@@ -100,13 +100,13 @@ describe('Testes do service ContatoService', () => {
     
             await ContatoService.apagar(novoContato.id)
     
-            await expect(funcaoComErro).rejects.toThrow('Contato não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Contato não encontrado' })
         })
     
         it('Tentar apagar um contato que não existe', async () => {
             const funcaoComErro = async () => await ContatoService.apagar(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Esse contato não existe')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Esse contato não existe' })
         })
 
     })

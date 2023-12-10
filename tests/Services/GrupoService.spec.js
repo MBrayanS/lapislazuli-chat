@@ -48,13 +48,13 @@ describe('Testes do service GrupoService', () => {
         it('Grupo não encontrado', async () => {
             const funcaoComErro = async () => await GrupoService.pegarPorId(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Grupo não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Grupo não encontrado' })
         })
     
         it('Erro de id com valor invalido', async () => {
             const funcaoComErro = async () => await GrupoService.pegarPorId('')
     
-            await expect(funcaoComErro).rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
 
     })
@@ -67,13 +67,13 @@ describe('Testes do service GrupoService', () => {
     
             await GrupoService.apagar(novoGrupo.id)
     
-            await expect(funcaoComErro).rejects.toThrow('Grupo não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Grupo não encontrado' })
         })
     
         it('Tentar apagar um grupo que não existe', async () => {
             const funcaoComErro = async () => await GrupoService.apagar(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Esse grupo não existe')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Esse grupo não existe' })
         })
 
     })

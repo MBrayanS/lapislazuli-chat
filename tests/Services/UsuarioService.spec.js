@@ -39,7 +39,7 @@ describe('Testes do model UsuarioService', () => {
                 await UsuarioService.criar(dadosDoUsuario)
             }
 
-            await expect(funcaoComErro).rejects.toThrow('A propriedade email esta duplicada')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade email esta duplicada' })
     
             await UsuarioEntity.destroy({ where: { email: dadosDoUsuario.email } })
         })
@@ -60,19 +60,19 @@ describe('Testes do model UsuarioService', () => {
         it('Usuario não encontrado', async () => {
             const funcaoComErro = async () => await UsuarioService.pegarPorId(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Usuario não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Usuario não encontrado' })
         })
     
         it('Erro de id com string invalida', async () => {
             const funcaoComErro = async () => await UsuarioService.pegarPorId('')
     
-            await expect(funcaoComErro).rejects.toThrow('As propriedades de ids devem ter o formato UUID')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'As propriedades de ids devem ter o formato UUID' })
         })
     
         it('Erro de id com valor invalido', async () => {
             const funcaoComErro = async () => await UsuarioService.pegarPorId(undefined)
     
-            await expect(funcaoComErro).rejects.toThrow('A propriedade id não pode ter valor undefined')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade id não pode ter valor undefined' })
         })
 
     })
@@ -91,7 +91,7 @@ describe('Testes do model UsuarioService', () => {
         it('Usuario não encontrado', async () => {
             const funcaoComErro = async () => await UsuarioService.pegarPorEmailESenha('teste', 'teste')
     
-            expect(funcaoComErro).rejects.toThrow('Usuario não encontrado')
+            expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Usuario não encontrado' })
         })
 
     })
@@ -104,13 +104,13 @@ describe('Testes do model UsuarioService', () => {
     
             await UsuarioService.apagar(novoUsuario.id)
     
-            await expect(funcaoComErro).rejects.toThrow('Usuario não encontrado')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Usuario não encontrado' })
         })
     
         it('Tentar apagar um usuario que não existe', async () => {
             const funcaoComErro = async () => await UsuarioService.apagar(idFalso)
     
-            await expect(funcaoComErro).rejects.toThrow('Esse usuario não existe')
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'Esse usuario não existe' })
         })
 
     })
