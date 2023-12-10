@@ -54,7 +54,7 @@ describe('Testes do service ContatoService', () => {
                 destinatario_id: undefined
             }
 
-            const finalDaMensagem = 'esta vazia'
+            const finalDaMensagem = 'não pode estar vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( ContatoService, dadosDoContato, dadosInvalidos, finalDaMensagem ) )
         })

@@ -12,8 +12,8 @@ function tratarErrosDeServices( erro ) {
     const tipoDoErro = erro?.errors[0]?.type
     const path = erro?.errors[0]?.path
     
-    if( tipoDoErro == 'notNull Violation' ) throw new ErroCustomizado(400, `A propriedade ${path} esta vazia`)
-    if( tipoDoErro == 'unique violation' ) throw new ErroCustomizado(400, `A propriedade ${path} esta duplicada`)
+    if( tipoDoErro == 'notNull Violation' ) throw new ErroCustomizado(400, `A propriedade ${path} não pode estar vazia`)
+    if( tipoDoErro == 'unique violation' ) throw new ErroCustomizado(400, `A propriedade ${path} não esta disponivel`)
     if( tipoDoErro == 'string violation') throw new ErroCustomizado(400, `A propriedade ${path} não tem um valor valido`)
 
     throw erro

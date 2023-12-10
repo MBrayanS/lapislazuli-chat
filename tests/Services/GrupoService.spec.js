@@ -27,7 +27,7 @@ describe('Testes do service GrupoService', () => {
     
         it('Erro com valores vazios', async () => {
             const dadosInvalidos = { nome: undefined, descricao: undefined }
-            const finalDaMensagem = 'esta vazia'
+            const finalDaMensagem = 'não pode estar vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( GrupoService, dadosDoGrupo, dadosInvalidos, finalDaMensagem ) )
         })

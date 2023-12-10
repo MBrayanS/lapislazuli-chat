@@ -28,7 +28,7 @@ describe('Testes do model UsuarioService', () => {
 
         it('Erro com valores vazios', async () => {
             const dadosInvalidos = { nome: undefined, senha: undefined, email: undefined }
-            const finalDaMensagem = 'esta vazia'
+            const finalDaMensagem = 'não pode estar vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( UsuarioService, dadosDoUsuario, dadosInvalidos, finalDaMensagem ) )
         })
@@ -39,7 +39,7 @@ describe('Testes do model UsuarioService', () => {
                 await UsuarioService.criar(dadosDoUsuario)
             }
 
-            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade email esta duplicada' })
+            await expect(funcaoComErro).rejects.toThrow({ statusCode: 400, message: 'A propriedade email não esta disponivel' })
     
             await UsuarioEntity.destroy({ where: { email: dadosDoUsuario.email } })
         })

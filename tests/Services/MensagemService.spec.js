@@ -49,7 +49,7 @@ describe('Testes do service MensagemService', () => {
 
         it('Erro com valores vazios', async () => {
             const dadosInvalidos = { texto: undefined, usuario_id: undefined, canal_id: undefined }
-            const finalDaMensagem = 'esta vazia'
+            const finalDaMensagem = 'não pode estar vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( MensagemService, dadosDaMensagem, dadosInvalidos, finalDaMensagem ) )
         })

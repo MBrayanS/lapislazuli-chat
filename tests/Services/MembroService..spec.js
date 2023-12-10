@@ -45,7 +45,7 @@ describe('Testes do service MembroService', () => {
                 grupo_id: undefined
             }
 
-            const finalDaMensagem = 'esta vazia'
+            const finalDaMensagem = 'não pode estar vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( MembroService, dadosDoMembro, dadosInvalidos, finalDaMensagem ) )
         })

@@ -3,6 +3,6 @@ module.exports = function testarMetodoCriarComPropriedadesInvalidas( Service, da
         const dadosComErro = { ...dadosCorretos, [propriedade]: valorInvalido }
 
         await expect( async () => await Service.criar(dadosComErro) )
-        .rejects.toThrow(`A propriedade ${propriedade} ${finalDaMensagem}`)
+        .rejects.toThrow({ statusCode: 400, message: `A propriedade ${propriedade} ${finalDaMensagem}` })
     })
 }
