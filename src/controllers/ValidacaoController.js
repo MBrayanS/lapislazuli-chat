@@ -1,7 +1,7 @@
 const ErroCustomizado = require('../errors/ErroCustomizado')
-const middlewareDeErros = require('../errors/middlewareDeErros')
 
 const Joi = require("joi")
+const tratarErrosDeControllers = require('../errors/tratarErrosDeControllers')
 
 function ValidacaoController() {
     const mensagensPersonalizadas = {
@@ -35,7 +35,7 @@ function ValidacaoController() {
             next()
         }
         
-        catch( erro ) { middlewareDeErros(erro, res) }
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
     return {

@@ -1,4 +1,4 @@
-const middlewareDeErros = require("../errors/middlewareDeErros")
+const tratarErrosDeControllers = require("../errors/tratarErrosDeControllers")
 
 function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
     async function cadastrar( req, res ) {
@@ -12,7 +12,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
             res.sendStatus(201)
         }
         
-        catch( erro ) { middlewareDeErros(erro, res) }
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
     async function logar( req, res ) {
@@ -26,7 +26,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
             res.sendStatus(200)
         }
         
-        catch( erro ) { middlewareDeErros(erro, res) }
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
     return {
