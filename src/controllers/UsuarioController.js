@@ -5,7 +5,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
         try {
             const dadosDeCadastro = req.body
             const { id } = await UsuarioService.criar(dadosDeCadastro)
-            const token = AutenticacaoJWT.criarToken(id)
+            const token = AutenticacaoJWT.criarToken({ id })
 
             CookieParser.enviarCookie(token, res)
 
@@ -19,7 +19,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
         try {
             const { email, senha } = req.body
             const { id } = await UsuarioService.pegarPorEmailESenha(email, senha)
-            const token = AutenticacaoJWT.criarToken(id)
+            const token = AutenticacaoJWT.criarToken({ id })
             
             CookieParser.enviarCookie(token, res)
 
