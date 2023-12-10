@@ -16,7 +16,7 @@ function tratarErrosDeServices( erro ) {
     if( tipoDoErro == 'unique violation' ) throw new ErroCustomizado(400, `A propriedade ${path} esta duplicada`)
     if( tipoDoErro == 'string violation') throw new ErroCustomizado(400, `A propriedade ${path} não tem um valor valido`)
 
-    throw new ErroCustomizado(erro)
+    throw erro
 }
 
 module.exports = tratarErrosDeServices
