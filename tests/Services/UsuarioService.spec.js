@@ -5,7 +5,7 @@ const testarMetodoCriarComPropriedadesInvalidas = require('../testarMetodoCriarC
 
 describe('Testes do model UsuarioService', () => {
 
-    const dadosDoUsuario = { nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste', cor: '#fff' }
+    const dadosDoUsuario = { nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste' }
     const idFalso = '9b15b9dc-7ad6-4ef0-b8ef-b2f46178b7e3'
     
     describe('Criar novo usuario', () => {
@@ -20,14 +20,14 @@ describe('Testes do model UsuarioService', () => {
         })
     
         it('Erro com valores invalidos', async () => {
-            const dadosInvalidos = { nome: {}, senha: [], email: {}, cor: [] }
+            const dadosInvalidos = { nome: {}, senha: [], email: {} }
             const finalDaMensagem = 'não tem um valor valido'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( UsuarioService, dadosDoUsuario, dadosInvalidos, finalDaMensagem ) )
         })
 
         it('Erro com valores vazios', async () => {
-            const dadosInvalidos = { nome: undefined, senha: undefined, email: undefined, cor: undefined }
+            const dadosInvalidos = { nome: undefined, senha: undefined, email: undefined }
             const finalDaMensagem = 'esta vazia'
 
             await Promise.all( testarMetodoCriarComPropriedadesInvalidas( UsuarioService, dadosDoUsuario, dadosInvalidos, finalDaMensagem ) )

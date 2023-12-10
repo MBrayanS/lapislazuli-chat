@@ -7,8 +7,7 @@ const next = jest.fn()
 const dadosDeCadastro = {
     nome: 'Nome de usuario',
     email: 'usuario@teste.com',
-    senha: 'Senha12!',
-    cor: '#FFF'
+    senha: 'Senha12!'
 }
 
 describe('Testes do controller ValidacaoController', () => {
@@ -36,15 +35,6 @@ describe('Testes do controller ValidacaoController', () => {
         await ValidacaoController.cadastrar( req, res, next )
 
         expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'A senha deve conter pelo menos um número e um caractere especial' })
-        expect(res.status).toHaveBeenCalledWith(400)
-    })
-    
-    it('Cor invalida', async () => {
-        req.body = { ...dadosDeCadastro, cor: 'invalida'}
-
-        await ValidacaoController.cadastrar( req, res, next )
-
-        expect(res.json).toHaveBeenCalledWith({ mensagemDeErro: 'Este valor para cor não é suportado' })
         expect(res.status).toHaveBeenCalledWith(400)
     })
 

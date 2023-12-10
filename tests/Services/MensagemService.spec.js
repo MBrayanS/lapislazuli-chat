@@ -15,7 +15,7 @@ const dadosDaMensagem = { texto: 'Essa é uma mensagem de teste.' }
 describe('Testes do service MensagemService', () => {
 
     beforeAll( async () => {
-        usuarioTeste = await UsuarioService.criar({ nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste', cor: '#fff' })
+        usuarioTeste = await UsuarioService.criar({ nome: 'Usuario teste', senha: '12345678', email: 'usuario@teste' })
         grupoTeste = await GrupoService.criar({ nome: 'Grupo teste', descricao: 'grupo teste e tals' })
 
         dadosDaMensagem.usuario_id = usuarioTeste.id

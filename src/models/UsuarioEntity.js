@@ -23,7 +23,7 @@ const UsuarioEntity = sequelize.define('Usuario', {
     },
     cor: {
         type: DataTypes.STRING,
-        allowNull: false
+        defaultValue: '#050259'
     }
 })
 
