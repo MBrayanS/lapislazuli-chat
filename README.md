@@ -14,7 +14,7 @@
   </a>
 
   <h3 style="font-size: 32px; font-weight: 500">Lapislazuli Chat</h3>
-  <p> Um lugar para conversar e criar novas amizadas! </p>
+  <p> Um lugar para conversar e criar novas amizades! </p>
 
   <h4> 🚧 Em desenvolvimento 🚧 </h4>
 
