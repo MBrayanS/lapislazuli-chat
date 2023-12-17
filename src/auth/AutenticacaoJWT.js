@@ -7,6 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET
 const JWT_EXPIRES = process.env.JWT_EXPIRES
 
 function AutenticacaoJWT() {
+    
     function criarToken( payload ) {
         try {
             if( !payload ) throw { mensagemDeErro: 'O payload não foi fornecido' }
