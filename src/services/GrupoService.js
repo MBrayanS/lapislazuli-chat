@@ -1,40 +1,30 @@
-const GrupoEntity = require('../models/GrupoEntity')
-const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
+function GrupoService( GrupoRepository ) {
 
-function GrupoService() {
-    async function criar( dadosDoGrupo ) {
-        try { return await GrupoEntity.create(dadosDoGrupo) } 
-        
-        catch( erro ) { tratarErrosDeServices(erro) }
+    async function criar({ nome, descricao }) {
+        return await GrupoRepository.criar({ nome, descricao })
     }
 
     async function pegarPorId( id ) {
-        try { 
-            const grupoSalvo = await GrupoEntity.findOne({ where: { id } })
-
-            if( !grupoSalvo ) throw 'Grupo não encontrado'
-
-            return grupoSalvo
-        } 
+        const grupo = await GrupoRepository.pegar({ id })
         
-        catch( erro ) { tratarErrosDeServices(erro) }
+        if( !grupo ) throw { statusCode: 404, message: 'Grupo não encontrado' }
+
+        return grupo
     }
 
-    async function apagar( id ) {
-        try { 
-            const resposta = await GrupoEntity.destroy({ where: { id } })
-
-            if( !resposta ) throw 'Esse grupo não existe'
-        } 
+    async function apagarPorId( id ) {
+        const resposta = await GrupoRepository.apagar({ id })
         
-        catch( erro ) { tratarErrosDeServices(erro) }
+        if( !resposta ) throw { statusCode: 400, message: 'Esse grupo não existe' }
+
+        return resposta
     }
     
     return {
         criar,
         pegarPorId,
-        apagar
+        apagarPorId
     }
 }
 
-module.exports = GrupoService()
+module.exports = GrupoService

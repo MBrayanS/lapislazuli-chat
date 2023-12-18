@@ -1,53 +1,38 @@
-const UsuarioEntity = require('../models/UsuarioEntity')
-const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
+function UsuarioService( UsuarioRepository ) {
+    
+    async function criar({ nome, email, senha }) {
+        try { return await UsuarioRepository.criar({ nome, email, senha }) }
+            
+        catch( erro ) {
+            const emailEmUso = erro.tipo == 'Violação única' && erro.campo == 'email'
 
-function UsuarioService () {
-    async function criar( dadosDoUsuario ) {
-        try { return await UsuarioEntity.create(dadosDoUsuario) } 
-        
-        catch( erro ) { tratarErrosDeServices(erro) }
+            if( emailEmUso ) throw { statusCode: 400, message: 'Este email já esta em uso' }
+
+            throw erro
+        }
     }
 
-    async function pegarPorId( id ) {
-        try {
-            const usuarioSalvo =  await UsuarioEntity.findOne({ where: { id } })
+    async function encontrar({ email, senha }) {
+        const usuario = await UsuarioRepository.pegar({ email, senha })
 
-            if ( !usuarioSalvo ) throw 'Usuario não encontrado'
+        if( !usuario ) throw { statusCode: 404, message: 'Usuário não encontrado' }
 
-            return usuarioSalvo
-        } 
-        
-        catch( erro ) { tratarErrosDeServices(erro) }
+        return usuario
     }
 
-    async function pegarPorEmailESenha( email, senha ) {
-        try {
-            const usuarioSalvo =  await UsuarioEntity.findOne({ where: { email, senha } })
-
-            if ( !usuarioSalvo ) throw 'Usuario não encontrado'
-
-            return usuarioSalvo
-        } 
+    async function apagarPorId( id ) {
+        const resposta = await UsuarioRepository.apagar({ id })
         
-        catch( erro ) { tratarErrosDeServices(erro) }
-    }
+        if( !resposta ) throw { statusCode: 400, message: 'Esse usuário não existe' }
 
-    async function apagar( id ) {
-        try { 
-            const resposta = await UsuarioEntity.destroy({ where: { id } }) 
-
-            if ( !resposta ) throw 'Esse usuario não existe'
-        } 
-        
-        catch( erro ) { tratarErrosDeServices(erro) }
+        return resposta
     }
 
     return {
         criar,
-        pegarPorId,
-        pegarPorEmailESenha,
-        apagar
+        encontrar,
+        apagarPorId
     }
 }
 
-module.exports = UsuarioService()
+module.exports = UsuarioService

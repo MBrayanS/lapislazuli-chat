@@ -1,40 +1,40 @@
-const MembroEntity = require('../models/MembroEntity')
-const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
+function MembroService( MembroRepository ) {
+    
+    async function criar({ usuario_id, grupo_id, ultima_interacao, ultima_mensagem }) {
+        try {
+            return await MembroRepository.criar({ usuario_id, grupo_id, ultima_interacao, ultima_mensagem })
+        }
+            
+        catch( erro ) {
+            const membroJaCriado = erro.tipo == 'Violação única' && erro.campo == 'usuario_id'
 
-function MembroService () {
-    async function criar( dadosDoMembro ) {
-        try { return await MembroEntity.create(dadosDoMembro) }
+            if( membroJaCriado ) throw { statusCode: 400, message: 'Já existe um membro com esses dados' }
 
-        catch ( erro ) { tratarErrosDeServices(erro) }
+            throw erro
+        }
     }
 
-    async function pegarPorId( id ) {
-        try {
-            const membroSalvo = await MembroEntity.findOne({ where: { id } })
+    async function encontrar({ usuario_id, grupo_id }) {
+        const membroSalvo = await MembroRepository.pegar({ usuario_id, grupo_id })
 
-            if( !membroSalvo ) throw 'Membro não encontrado'
+        if( !membroSalvo ) throw { statusCode: 404, message: 'Membro não encontrado' }
 
-            return membroSalvo
-        }
-
-        catch( erro ) { tratarErrosDeServices(erro) }
+        return membroSalvo
     }
 
-    async function apagar( id ) {
-        try {
-            const resposta = await MembroEntity.destroy({ where: { id } })
-
-            if( !resposta ) throw 'Esse membro não existe'
-        }
-
-        catch( erro ) { tratarErrosDeServices(erro) }
+    async function apagarPorId( id ) {
+        const resposta = await MembroRepository.apagar({ id })
+        
+        if( !resposta ) throw { statusCode: 400, message: 'Esse membro não existe' }
+        
+        return resposta
     }
 
     return {
         criar,
-        pegarPorId,
-        apagar
+        encontrar,
+        apagarPorId
     }
 }
 
-module.exports = MembroService()
+module.exports = MembroService

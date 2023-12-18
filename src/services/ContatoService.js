@@ -1,48 +1,40 @@
-const ContatoEntity = require('../models/ContatoEntity')
-const tratarErrosDeServices = require('../errors/tratarErrosDeServices')
-
-function ContatoService () {
+function ContatoService( ContatoRepository ) {
+    
     async function criar({ nome, usuario_id, destinatario_id, ultima_interacao, ultima_mensagem }) {
         try {
-            return await ContatoEntity.create({
-                nome,
-                usuario_id,
-                destinatario_id,
-                ultima_interacao,
-                ultima_mensagem
-            })
+            return await ContatoRepository.criar({ nome, usuario_id, destinatario_id, ultima_interacao, ultima_mensagem })
         }
+            
+        catch( erro ) {
+            const contatoJaCriado = erro.tipo == 'Violação única' && erro.campo == 'usuario_id'
 
-        catch( erro ) { tratarErrosDeServices(erro) }
+            if( contatoJaCriado ) throw { statusCode: 400, message: 'Já existe um contato com esses dados' }
+
+            throw erro
+        }
     }
 
     async function pegarPorId( id ) {
-        try {
-            const contatoSalvo = await ContatoEntity.findOne({ where: { id } })
+        const contatoSalvo = await ContatoRepository.pegar({ id })
 
-            if( !contatoSalvo ) throw 'Contato não encontrado'
+        if( !contatoSalvo ) throw { statusCode: 404, message: 'Contato não encontrado' }
 
-            return contatoSalvo
-        }
-
-        catch( erro ) { tratarErrosDeServices(erro) }
+        return contatoSalvo
     }
 
-    async function apagar( id ) {
-        try {
-            const resposta = await ContatoEntity.destroy({ where: { id } })
+    async function apagarPorId( id ) {
+        const resposta = await ContatoRepository.apagar({ id })
 
-            if( !resposta ) throw 'Esse contato não existe'
-        }
+        if( !resposta ) throw { statusCode: 400, message: 'Esse contato não existe' }
 
-        catch( erro ) { tratarErrosDeServices(erro) }
+        return resposta
     }
 
     return {
         criar,
         pegarPorId,
-        apagar
+        apagarPorId
     }
 }
 
-module.exports = ContatoService()
+module.exports = ContatoService
