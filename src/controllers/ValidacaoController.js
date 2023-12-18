@@ -7,12 +7,12 @@ function ValidacaoController() {
         'string.min': 'O campo {#label} deve ter pelo menos {#limit} caracteres',
         'string.max': 'O campo {#label} não pode ter mais de {#limit} caracteres',
         'any.required': 'O campo {#label} é obrigatório',
-        'string.email' : 'O campo email não esta valido'
+        'string.email' : 'O campo email não está válido'
     }
 
     const options = { messages: mensagensPersonalizadas }
 
-    async function cadastrar( req, res, next ) {
+    function cadastrar( req, res, next ) {
         try {
             const schema = Joi.object({
                 nome: Joi.string().min(3).max(20).required(),
