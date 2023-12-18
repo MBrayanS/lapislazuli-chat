@@ -28,6 +28,12 @@ const ContatoEntity = sequelize.define('Contato', {
         type: DataTypes.UUID,
         allowNull: false
     }
+}, { 
+    uniqueKeys: {
+        unique_id_usuario_destinatario: {
+            fields: ['usuario_id', 'destinatario_id'],
+        },
+    },
 })
 
 module.exports = ContatoEntity

@@ -24,6 +24,12 @@ const MembroEntity = sequelize.define('Membro', {
         type: DataTypes.UUID,
         allowNull: false
     }
+}, { 
+    uniqueKeys: {
+        unique_id_usuario_grupo: {
+            fields: ['usuario_id', 'grupo_id'],
+        },
+    },
 })
 
 module.exports = MembroEntity
