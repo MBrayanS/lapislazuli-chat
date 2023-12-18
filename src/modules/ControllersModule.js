@@ -1,6 +1,7 @@
-const UsuarioController = require("./UsuarioController")
+const UsuarioController = require("../controllers/UsuarioController")
 
-const UsuarioService = require('../services/UsuarioService')
+const { UsuarioService } = require('./ServicesModule')
+
 const CookieParser = require("../auth/CookieParser")
 const AutenticacaoJWT = require('../auth/AutenticacaoJWT')
 
