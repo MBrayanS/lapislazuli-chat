@@ -1,5 +1,3 @@
-const ErroCustomizado = require('../errors/ErroCustomizado')
-
 const Joi = require("joi")
 const tratarErrosDeControllers = require('../errors/tratarErrosDeControllers')
 
@@ -27,7 +25,8 @@ function ValidacaoController() {
             const dadosDeCadastro = req.body
             const { error } = schema.validate(dadosDeCadastro, options)
 
-            if( error ) throw new ErroCustomizado(400, error.message)
+            if( error ) throw { statusCode: 400, message: error.message }
+
             next()
         }
         
