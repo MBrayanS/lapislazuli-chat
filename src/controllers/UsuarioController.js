@@ -3,8 +3,8 @@ const tratarErrosDeControllers = require("../errors/tratarErrosDeControllers")
 function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
     async function cadastrar( req, res ) {
         try {
-            const dadosDeCadastro = req.body
-            const { id } = await UsuarioService.criar(dadosDeCadastro)
+            const { nome, email, senha } = req.body
+            const { id } = await UsuarioService.criar({ nome, email, senha })
             const token = AutenticacaoJWT.criarToken({ id })
 
             CookieParser.enviarCookie(token, res)
@@ -18,7 +18,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
     async function logar( req, res ) {
         try {
             const { email, senha } = req.body
-            const { id } = await UsuarioService.pegarPorEmailESenha(email, senha)
+            const { id } = await UsuarioService.encontrar({ email, senha })
             const token = AutenticacaoJWT.criarToken({ id })
             
             CookieParser.enviarCookie(token, res)
