@@ -29,6 +29,7 @@
         <li> <a href='#-sobre-o-projeto'>Sobre</a> </li>
         <li> <a href='#-layout'>Layout</a> </li>
         <li> <a href='#-funcionalidades'>Funcionalidades</a> </li>
+        <li> <a href='#-documentação'>Documentação</a> </li>
         <li> <a href='#-tecnologias'>Tecnologias</a> </li>
         <li> <a href='#-como-executar-o-projeto'>Como executar</a> </li>
         <li> <a href='#-contribuição'>Contribuição</a> </li>
@@ -65,6 +66,18 @@ O código deste repositório está livre para ser clonado e usado por qualquer p
  - [ ] Adicionar outros usuários ao seus contatos
  - [ ] Criar e participar de grupos
  - [ ] Enviar e receber mensagens em tempo real
+
+<br>
+
+<p align="right"> <a href="#topo">⬆️ Voltar ao topo ⬆️ </a> </p>
+
+***
+
+<br>
+
+## 📚 Documentação
+
+ Você pode conferir a documentação do backend [neste arquivo](/docs/documentacao.md).
 
 <br>
 
