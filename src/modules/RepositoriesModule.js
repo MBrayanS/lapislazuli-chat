@@ -1,4 +1,5 @@
 const Repository = require("../repository/Repository");
+const UsuarioRepository = require("../repository/UsuarioRepository");
 
 const ContatoEntity = require("../models/ContatoEntity");
 const GrupoEntity = require("../models/GrupoEntity");
@@ -11,5 +12,5 @@ module.exports = {
     GrupoRepository: new Repository(GrupoEntity),
     MembroRepository: new Repository(MembroEntity),
     MensagemRepository: new Repository(MensagemEntity),
-    UsuarioRepository: new Repository(UsuarioEntity),
+    UsuarioRepository: new UsuarioRepository(UsuarioEntity),
 }
