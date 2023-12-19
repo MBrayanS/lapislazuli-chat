@@ -16,6 +16,14 @@ Aqui neste arquivo você vai encontrar as funcionalidades do código `backend` d
 
 ---
 
+> ## api/logar
+>
+> Utilizada para efetuar o login de usuários já cadastrados. 
+>
+> ###### [Mais detalhes](endpoints/logar.md)
+
+---
+
 <br>
 
 [Voltar ao README](/README.md)
