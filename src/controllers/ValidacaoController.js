@@ -12,20 +12,28 @@ function ValidacaoController() {
 
     const options = { messages: mensagensPersonalizadas }
 
+    const regrasDeValidacao = {
+        nome: Joi.string().min(3).max(20).required(),
+        email: Joi.string().email().required(),
+        senha: Joi.string().min(8).max(20).pattern(/^(?=.*\d)(?=.*[!@#$%^&*])/)
+            .message({ 'string.pattern.base': 'A senha deve conter pelo menos um número e um caractere especial' })
+            .required()
+    }
+    
+    function validarCamposDeEntrada( camposDeEntrada, regras ) {
+        const schema = Joi.object(regras)
+    
+        const { error } = schema.validate(camposDeEntrada, options)
+    
+        if( error ) throw { statusCode: 400, message: error.message }
+    }
+
     function cadastrar( req, res, next ) {
         try {
-            const schema = Joi.object({
-                nome: Joi.string().min(3).max(20).required(),
-                email: Joi.string().email().required(),
-                senha: Joi.string().min(8).max(20).pattern(/^(?=.*\d)(?=.*[!@#$%^&*])/)
-                    .message({ 'string.pattern.base': 'A senha deve conter pelo menos um número e um caractere especial' })
-                    .required()
-            })
+            const camposDeEntrada = req.body
+            const { nome, email, senha } = regrasDeValidacao
             
-            const dadosDeCadastro = req.body
-            const { error } = schema.validate(dadosDeCadastro, options)
-
-            if( error ) throw { statusCode: 400, message: error.message }
+            validarCamposDeEntrada(camposDeEntrada, { nome, email, senha })
 
             next()
         }
@@ -33,8 +41,22 @@ function ValidacaoController() {
         catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
+    function logar( req, res, next ) {
+        try {
+            const camposDeEntrada = req.body
+            const { email, senha } = regrasDeValidacao
+            
+            validarCamposDeEntrada(camposDeEntrada, { email, senha })
+    
+            next()
+        }
+        
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
+    }
+
     return {
-        cadastrar
+        cadastrar,
+        logar
     }
 }
 
