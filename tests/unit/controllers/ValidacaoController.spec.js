@@ -7,7 +7,7 @@ const dadosDeUsuario = {
 }
 
 const Response = { status: jest.fn().mockReturnThis(), json: jest.fn() }
-const Resquest = { body: dadosDeUsuario }
+const Resquest = { body: {} }
 const next = jest.fn()
 
 describe('Testando o ValidacaoController ao', () => {
@@ -15,10 +15,11 @@ describe('Testando o ValidacaoController ao', () => {
     afterEach( () => {
         Response.status.mockClear()
         Response.json.mockClear()
-        Resquest.body = dadosDeUsuario
     })
 
     describe('Validar dados para cadastro', () => {
+
+        beforeEach( () => Resquest.body = dadosDeUsuario )
 
         it('com sucesso', () => {
             ValidacaoController.cadastrar( Resquest, Response, next )
@@ -37,22 +38,73 @@ describe('Testando o ValidacaoController ao', () => {
 
     })
 
-    it('Gerar erro de email inválido', async () => {
-        Resquest.body = { ...dadosDeUsuario, email: 'usuario'}
+    describe('Validar dados para logar', () => {
 
-        ValidacaoController.cadastrar( Resquest, Response )
+        const { email, senha } = dadosDeUsuario
+        
+        beforeEach( () => Resquest.body = { email, senha } )
 
-        expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo email não está válido' })
-        expect(Response.status).toHaveBeenCalledWith(400)
+        it('com sucesso', () => {
+            ValidacaoController.logar( Resquest, Response, next )
+    
+            expect(next).toHaveBeenCalled()
+        })
+
+        it('com erro inesperado', async () => {
+            const nextComErro = () => { throw new Error('Erro inesperado') }
+
+            ValidacaoController.logar( Resquest, Response, nextComErro )
+
+            expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'Erro interno do servidor' })
+            expect(Response.status).toHaveBeenCalledWith(500)
+        })
+
     })
 
-    it('Gerar erro de senha inválida', async () => {
-        Resquest.body = { ...dadosDeUsuario, senha: '12345678'}
+    describe('Gerar erro de email inválido', () => {
 
-        ValidacaoController.cadastrar( Resquest, Response )
+        const erroEsperado = { mensagemDeErro: 'O campo email não está válido' }
+        const statusEsperado = 400
 
-        expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'A senha deve conter pelo menos um número e um caractere especial' })
-        expect(Response.status).toHaveBeenCalledWith(400)
+        beforeEach( () => Resquest.body = { ...dadosDeUsuario, email: 'usuario'} )
+
+        it('com a rota cadastrar', () => {
+            ValidacaoController.cadastrar( Resquest, Response )
+    
+            expect(Response.json).toHaveBeenCalledWith(erroEsperado)
+            expect(Response.status).toHaveBeenCalledWith(statusEsperado)
+        })
+
+        it('com a rota logar', () => {
+            ValidacaoController.logar( Resquest, Response )
+    
+            expect(Response.json).toHaveBeenCalledWith(erroEsperado)
+            expect(Response.status).toHaveBeenCalledWith(statusEsperado)
+        })
+
+    })
+
+    describe('Gerar erro de senha inválida', () => {
+
+        const erroEsperado = { mensagemDeErro: 'A senha deve conter pelo menos um número e um caractere especial' }
+        const statusEsperado = 400
+
+        beforeEach( () => Resquest.body = { ...dadosDeUsuario, senha: '12345678'} )
+
+        it('com a rota cadastrar', () => {
+            ValidacaoController.cadastrar( Resquest, Response )
+        
+            expect(Response.json).toHaveBeenCalledWith(erroEsperado)
+            expect(Response.status).toHaveBeenCalledWith(statusEsperado)
+        })
+
+        it('com a rota logar', () => {
+            ValidacaoController.logar( Resquest, Response )
+        
+            expect(Response.json).toHaveBeenCalledWith(erroEsperado)
+            expect(Response.status).toHaveBeenCalledWith(statusEsperado)
+        })
+
     })
     
     describe('Gerar erro de campo', () => {
