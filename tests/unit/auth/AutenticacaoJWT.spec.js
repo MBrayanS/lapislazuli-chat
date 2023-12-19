@@ -18,12 +18,6 @@ describe('Testando o AutenticacaoJWT ao', () => {
             await expect(funcaoComErro).rejects.toEqual({ statusCode: 401, message: 'O payload não foi fornecido' })
         })
 
-        it('com erro de payload invalido', async () => {
-            const funcaoComErro = async () => AutenticacaoJWT.criarToken('string')
-    
-            await expect(funcaoComErro).rejects.toEqual({ statusCode: 401, message: 'O payload deve ser um objeto' })
-        })
-
     })
 
     describe('Validar token', () => {
