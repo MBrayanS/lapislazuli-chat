@@ -93,6 +93,12 @@ Possiveis respostas da requisição.
 { mensagemDeErro: 'O token não foi fornecido ' }
 ```
 
+### 500 Internal Server Error
+
+``` js
+{ mensagemDeErro: 'Erro interno do servidor' }
+```
+
 ---
 
 <br>
