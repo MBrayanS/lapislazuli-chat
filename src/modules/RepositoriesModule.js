@@ -7,9 +7,9 @@ const MensagemEntity = require("../models/MensagemEntity");
 const UsuarioEntity = require("../models/UsuarioEntity");
 
 module.exports = {
-    ContatoRepository: Repository(ContatoEntity),
-    GrupoRepository: Repository(GrupoEntity),
-    MembroRepository: Repository(MembroEntity),
-    MensagemRepository: Repository(MensagemEntity),
-    UsuarioRepository: Repository(UsuarioEntity),
+    ContatoRepository: new Repository(ContatoEntity),
+    GrupoRepository: new Repository(GrupoEntity),
+    MembroRepository: new Repository(MembroEntity),
+    MensagemRepository: new Repository(MensagemEntity),
+    UsuarioRepository: new Repository(UsuarioEntity),
 }
