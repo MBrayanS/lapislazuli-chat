@@ -43,11 +43,9 @@ Possiveis respostas da requisição.
 
 ## Sucesso
 
-### 201 OK
+### 201 CREATE
 
-``` js
-CREATE 
-```
+> Sem resposta
 
 ## Erro
 
