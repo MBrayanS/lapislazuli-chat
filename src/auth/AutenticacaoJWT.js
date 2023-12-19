@@ -11,7 +11,6 @@ function AutenticacaoJWT() {
     function criarToken( payload ) {
         try {
             if( !payload ) throw { mensagemDeErro: 'O payload não foi fornecido' }
-            if( typeof payload != 'object' ) throw { mensagemDeErro: 'O payload deve ser um objeto' }
 
             return jwt.sign(payload, JWT_SECRET, { expiresIn: JWT_EXPIRES })
         } 
