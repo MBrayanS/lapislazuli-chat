@@ -82,15 +82,15 @@ Possiveis respostas da requisição.
 ### 401 Unauthorized
 
 ``` js
-{ mensagemDeErro: 'O token expirou'  }
+{ mensagemDeErro: 'O token expirou' }
 ```
 
 ``` js
-{ mensagemDeErro: 'O token é invalido '  }
+{ mensagemDeErro: 'O token é invalido ' }
 ```
 
 ``` js
-{ mensagemDeErro: 'O token não foi fornecido '  }
+{ mensagemDeErro: 'O token não foi fornecido ' }
 ```
 
 ---
