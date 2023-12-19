@@ -57,6 +57,30 @@ CREATE
 { mensagemDeErro: 'Este email já esta em uso' }
 ```
 
+``` js
+{ mensagemDeErro: 'O campo email não está válido' }
+```
+
+``` js
+{ mensagemDeErro: 'A senha deve conter pelo menos um número e um caractere especial' }
+```
+
+``` js
+{ mensagemDeErro: 'O campo {campoReferente} é obrigatório' }
+```
+
+``` js
+{ mensagemDeErro: 'O campo {campoReferente} deve ser uma string' }
+```
+
+``` js
+{ mensagemDeErro: 'O campo {campoReferente} deve ter pelo menos {quantidadeReferente} caracteres' }
+```
+
+``` js
+{ mensagemDeErro: 'O campo {campoReferente} não pode ter mais de {quantidadeReferente} caracteres' }
+```
+
 ### 401 Unauthorized
 
 ``` js
