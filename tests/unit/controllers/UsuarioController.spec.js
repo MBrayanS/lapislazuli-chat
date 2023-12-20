@@ -2,10 +2,11 @@ const UsuarioControllerFactory = require("../../../src/controllers/UsuarioContro
 
 const UsuarioServiceMock = {
     criar: jest.fn().mockReturnValue({ id: 'idTeste' }),
-    encontrar: jest.fn().mockReturnValue({ id: 'idTeste' })
+    encontrar: jest.fn().mockReturnValue({ id: 'idTeste' }),
+    buscarUsuariosPorNome: jest.fn().mockReturnValue([]),
 }
 
-const CookieParserMock = { enviarCookie: jest.fn() }
+const CookieParserMock = { enviarCookieComToken: jest.fn() }
 const AutenticacaoJWTMock = { criarToken: jest.fn() }
 
 const UsuarioController = UsuarioControllerFactory(UsuarioServiceMock, CookieParserMock, AutenticacaoJWTMock)
@@ -74,6 +75,29 @@ describe('Testando o UsuarioController ao', () => {
             const UsuarioController = UsuarioControllerFactory(UsuarioServiceMock, CookieParserMock, AutenticacaoJWTMock)
 
             await UsuarioController.logar(Request, Response)
+        
+            expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'Erro interno do servidor' })
+            expect(Response.status).toHaveBeenCalledWith(500)
+        })
+        
+    })
+
+    describe('Buscar usuários por nome', () => {
+
+        beforeEach( () => Request.body = { texto: 'a' } )
+
+        it('com sucesso', async () => {
+            await UsuarioController.buscarUsuariosPorNome(Request, Response)
+    
+            expect(Response.status).toHaveBeenCalledWith(200)
+            expect(Response.json).toHaveBeenCalledWith([])
+        })
+
+        it('com erro inesperado', async () => {
+            const UsuarioServiceMock = { buscarUsuariosPorNome: () => { throw new Error('Erro inesperado') } }
+            const UsuarioController = UsuarioControllerFactory(UsuarioServiceMock, CookieParserMock, AutenticacaoJWTMock)
+
+            await UsuarioController.buscarUsuariosPorNome(Request, Response)
         
             expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'Erro interno do servidor' })
             expect(Response.status).toHaveBeenCalledWith(500)
