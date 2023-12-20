@@ -1,8 +1,8 @@
 function CookieParser() {
-    function enviarCookie( token, res ) { res.cookie( 'token', token, { httpOnly: true } ) }
+    function enviarCookieComToken( token, res ) { res.cookie( 'token', token, { httpOnly: true } ) }
 
     return {
-        enviarCookie
+        enviarCookieComToken
     }
 }
 

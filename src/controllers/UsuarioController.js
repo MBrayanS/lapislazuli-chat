@@ -7,7 +7,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
             const { id } = await UsuarioService.criar({ nome, email, senha })
             const token = AutenticacaoJWT.criarToken({ id })
 
-            CookieParser.enviarCookie(token, res)
+            CookieParser.enviarCookieComToken(token, res)
 
             res.sendStatus(201)
         }
@@ -21,7 +21,7 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
             const { id } = await UsuarioService.encontrar({ email, senha })
             const token = AutenticacaoJWT.criarToken({ id })
             
-            CookieParser.enviarCookie(token, res)
+            CookieParser.enviarCookieComToken(token, res)
 
             res.sendStatus(200)
         }
