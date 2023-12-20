@@ -20,6 +20,12 @@ function UsuarioService( UsuarioRepository ) {
         return usuario
     }
 
+    async function buscarUsuariosPorNome( nome ) {
+        const usuariosEncontrados = await UsuarioRepository.buscarPorNome(nome)
+
+        return usuariosEncontrados.map( ({ nome, email, cor }) => { return { nome, email, cor } })
+    }
+
     async function apagarPorId( id ) {
         const resposta = await UsuarioRepository.apagar({ id })
         
@@ -31,7 +37,8 @@ function UsuarioService( UsuarioRepository ) {
     return {
         criar,
         encontrar,
-        apagarPorId
+        apagarPorId,
+        buscarUsuariosPorNome
     }
 }
 
