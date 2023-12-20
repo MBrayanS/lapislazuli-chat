@@ -18,7 +18,8 @@ function ValidacaoController() {
         email: Joi.string().email().required(),
         senha: Joi.string().min(8).max(20).pattern(/^(?=.*\d)(?=.*[!@#$%^&*])/)
             .message({ 'string.pattern.base': 'A senha deve conter pelo menos um número e um caractere especial' })
-            .required()
+            .required(),
+        texto: Joi.string().required()
     }
     
     function validarCamposDeEntrada( camposDeEntrada, regras ) {
@@ -55,9 +56,23 @@ function ValidacaoController() {
         catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
+    function texto( req, res, next ) {
+        try {
+            const camposDeEntrada = req.body
+            const { texto } = regrasDeValidacao
+            
+            validarCamposDeEntrada(camposDeEntrada, { texto })
+    
+            next()
+        }
+        
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
+    }
+
     return {
         cadastrar,
-        logar
+        logar,
+        texto
     }
 }
 
