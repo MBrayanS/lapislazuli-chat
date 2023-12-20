@@ -61,6 +61,27 @@ describe('Testando o ValidacaoController ao', () => {
 
     })
 
+    describe('Validar dados para texto', () => {
+
+        beforeEach( () => Resquest.body = { texto: 'texto' } )
+
+        it('com sucesso', () => {
+            ValidacaoController.texto( Resquest, Response, next )
+    
+            expect(next).toHaveBeenCalled()
+        })
+
+        it('com erro inesperado', async () => {
+            const nextComErro = () => { throw new Error('Erro inesperado') }
+
+            ValidacaoController.texto( Resquest, Response, nextComErro )
+
+            expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'Erro interno do servidor' })
+            expect(Response.status).toHaveBeenCalledWith(500)
+        })
+
+    })
+
     describe('Gerar erro de email inválido', () => {
 
         const erroEsperado = { mensagemDeErro: 'O campo email não está válido' }
