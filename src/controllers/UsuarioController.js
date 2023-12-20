@@ -29,9 +29,21 @@ function UsuarioController( UsuarioService, CookieParser, AutenticacaoJWT ) {
         catch( erro ) { tratarErrosDeControllers(erro, res) }
     }
 
+    async function buscarUsuariosPorNome( req, res ) {
+        try {
+            const { texto } = req.body
+            const usuariosEncontrados = await UsuarioService.buscarUsuariosPorNome(texto)
+
+            res.status(200).json(usuariosEncontrados)
+        }
+        
+        catch( erro ) { tratarErrosDeControllers(erro, res) }
+    }
+
     return {
         cadastrar,
-        logar
+        logar,
+        buscarUsuariosPorNome
     }
 }
 
