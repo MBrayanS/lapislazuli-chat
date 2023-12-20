@@ -1,5 +1,5 @@
 function CookieParser() {
-    function enviarCookie( token, res ) { res.cookie('token', token) }
+    function enviarCookie( token, res ) { res.cookie( 'token', token, { httpOnly: true } ) }
 
     return {
         enviarCookie
