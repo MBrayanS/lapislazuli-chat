@@ -7,7 +7,8 @@ function ValidacaoController() {
         'string.min': 'O campo {#label} deve ter pelo menos {#limit} caracteres',
         'string.max': 'O campo {#label} não pode ter mais de {#limit} caracteres',
         'any.required': 'O campo {#label} é obrigatório',
-        'string.email' : 'O campo email não está válido'
+        'string.email' : 'O campo email não está válido',
+        'string.empty': 'O campo {#label} não pode estar vazio',
     }
 
     const options = { messages: mensagensPersonalizadas }
