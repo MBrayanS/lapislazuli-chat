@@ -110,6 +110,15 @@ describe('Testando o ValidacaoController ao', () => {
     describe('Gerar erro de campo', () => {
 
         it('vazio', async () => {
+            Resquest.body = { nome: ''}
+
+            ValidacaoController.cadastrar( Resquest, Response, next )
+
+            expect(Response.json).toHaveBeenCalledWith({ mensagemDeErro: 'O campo \"nome\" não pode estar vazio' })
+            expect(Response.status).toHaveBeenCalledWith(400)
+        })
+
+        it('não fornecido', async () => {
             Resquest.body = {}
 
             ValidacaoController.cadastrar( Resquest, Response, next )
