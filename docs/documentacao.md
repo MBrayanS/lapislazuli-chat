@@ -24,6 +24,14 @@ Aqui neste arquivo você vai encontrar as funcionalidades do código `backend` d
 
 ---
 
+> ## api/buscarUsuariosPorNome
+>
+> Utilizada para buscar usuários no banco de dados que tenham o nome igual ao texto passado por parâmetro, ou parte dele. 
+>
+> ###### [Mais detalhes](endpoints/buscarUsuariosPorNome.md)
+
+---
+
 <br>
 
 [Voltar ao README](/README.md)
