@@ -68,6 +68,10 @@ Possiveis respostas da requisição.
 ```
 
 ``` js
+{ mensagemDeErro: 'O campo {campoReferente} não pode estar vazio' }
+```
+
+``` js
 { mensagemDeErro: 'O campo {campoReferente} deve ser uma string' }
 ```
 
