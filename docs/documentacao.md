@@ -45,4 +45,5 @@ Aqui neste arquivo você vai encontrar a documentação das rotas do `backend` d
 
 <br>
 
-[Voltar ao README](/README.md)
+<h4 align="right"> <a href="#documentação">⬆️ Voltar ao topo ⬆️</a> </h4>
+<h4 align="left"> <a href="../README.md">Voltar ao README</a> </h4>

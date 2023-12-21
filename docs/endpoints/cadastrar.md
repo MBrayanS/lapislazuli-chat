@@ -107,4 +107,5 @@ Possiveis respostas da requisição.
 
 <br>
 
-[Voltar ao arquivo principal](/docs/documentacao.md)
+<h4 align="right"> <a href="#rota-de-cadastro">⬆️ Voltar ao topo ⬆️</a> </h4>
+<h4 align="left"> <a href="../documentacao.md">Voltar ao arquivo principal</a> </h4>
