@@ -1,6 +1,6 @@
 # Documentação
 
-Aqui neste arquivo você vai encontrar as funcionalidades do código `backend` da aplicação. E junto a elas, descrições detalhadas do seu uso.
+Aqui neste arquivo você vai encontrar a documentação das rotas do `backend` da aplicação. Contendo descrições detalhadas do seu uso.
 
 <br>
 
