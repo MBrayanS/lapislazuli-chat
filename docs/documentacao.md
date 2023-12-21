@@ -4,11 +4,22 @@ Aqui neste arquivo você vai encontrar a documentação das rotas do `backend` d
 
 <br>
 
+<details>
+    <summary>Conteúdo</summary>
+    <br>
+    <ul>
+        <li> <a href='#cadastrar'>Cadastrar</a> </li>
+        <li> <a href='#logar'>Logar</a> </li>
+        <li> <a href='#buscar-usuários-por-nome'>Buscar usuários por nome</a> </li>
+    </ul>
+    <br>
+</details>
+
 ## Rotas para requisições internas
 
 <br>
 
-> ## api/cadastrar
+> ## Cadastrar
 >
 > Utilizada para cadastrar novos usuários. 
 >
@@ -16,7 +27,7 @@ Aqui neste arquivo você vai encontrar a documentação das rotas do `backend` d
 
 ---
 
-> ## api/logar
+> ## Logar
 >
 > Utilizada para efetuar o login de usuários já cadastrados. 
 >
@@ -24,7 +35,7 @@ Aqui neste arquivo você vai encontrar a documentação das rotas do `backend` d
 
 ---
 
-> ## api/buscarUsuariosPorNome
+> ## Buscar usuários por nome
 >
 > Utilizada para buscar usuários no banco de dados que tenham o nome igual ao texto passado por parâmetro, ou parte dele. 
 >
