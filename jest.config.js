@@ -6,6 +6,7 @@
 /** @type {import('jest').Config} */
 
 const config = {
+  globalSetup: "./src/database/conectarBancoDeDados.js",
   clearMocks: true,
   collectCoverage: true,
   coverageDirectory: "coverage",
