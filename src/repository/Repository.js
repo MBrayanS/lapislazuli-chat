@@ -37,6 +37,10 @@ class Repository {
         return await this.#Entity.destroy({ where: dados })
     }
 
+    async limparTodosOsRegistros() {
+        return await this.#Entity.destroy({ truncate: true })
+    }
+
 }
 
 module.exports = Repository
