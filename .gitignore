@@ -1,4 +1,10 @@
+# Diretórios
+
 /node_modules
 /coverage
+/src/database/sqlite
+
+# Arquivos
+
 package-lock.json
 .env
