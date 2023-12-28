@@ -4,6 +4,6 @@ require('../models/ContatoEntity')
 require('../models/GrupoEntity')
 require('../models/MembroEntity')
 require('../models/MensagemEntity')
-require('../models/ContatoEntity')
+require('../models/UsuarioEntity')
 
 module.exports = () => sequelize.sync({ alter: true })
