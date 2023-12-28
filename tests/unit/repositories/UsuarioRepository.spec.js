@@ -1,4 +1,3 @@
-const UsuarioEntity = require('../../../src/models/UsuarioEntity')
 const { UsuarioRepository } = require('../../../src/modules/RepositoriesModule')
 
 describe('Testando o UsuarioRepository ao', () => {
@@ -16,12 +15,8 @@ describe('Testando o UsuarioRepository ao', () => {
             await UsuarioRepository.criar(usuariosTestes.ana)
             await UsuarioRepository.criar(usuariosTestes.gabriel)
         })
-
-        afterEach( async () => {
-            await UsuarioEntity.destroy({ where: { email: usuariosTestes.lucas.email } })
-            await UsuarioEntity.destroy({ where: { email: usuariosTestes.ana.email } })
-            await UsuarioEntity.destroy({ where: { email: usuariosTestes.gabriel.email } })
-        }) 
+        
+        afterAll( async () => UsuarioRepository.limparTodosOsRegistros() ) 
 
         it('com sucesso', async () => {
             const usuariosEncontrados = await UsuarioRepository.buscarPorNome('L')
@@ -31,6 +26,5 @@ describe('Testando o UsuarioRepository ao', () => {
         })
 
     })
-
 
 })
