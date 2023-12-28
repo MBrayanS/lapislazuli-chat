@@ -1,8 +1,5 @@
-const GrupoServiceFactory = require("../../../src/services/GrupoService")
-const RepositoryInMemory = require('../../../src/repository/RepositoryInMemory')
-
-const GrupoRepository = RepositoryInMemory()
-const GrupoService = GrupoServiceFactory(GrupoRepository)
+const { GrupoRepository } = require("../../../src/modules/RepositoriesModule")
+const { GrupoService } = require('../../../src/modules/ServicesModule')
 
 const dadosDoGrupo = {
     nome: 'Nome do grupo',

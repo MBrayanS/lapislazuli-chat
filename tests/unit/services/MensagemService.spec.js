@@ -1,8 +1,5 @@
-const MensagemServiceFactory = require('../../../src/services/MensagemService')
-const RepositoryInMemory = require('../../../src/repository/RepositoryInMemory')
-
-const MensagemRepository = RepositoryInMemory()
-const MensagemService = MensagemServiceFactory(MensagemRepository)
+const { MensagemRepository } = require("../../../src/modules/RepositoriesModule")
+const { MensagemService } = require('../../../src/modules/ServicesModule')
 
 const dadosDaMensagem = {
     texto: 'Texto da mensagem',

@@ -1,8 +1,5 @@
-const MembroServiceFactory = require("../../../src/services/MembroService")
-const RepositoryInMemory = require('../../../src/repository/RepositoryInMemory')
-
-const MembroRepository = RepositoryInMemory()
-const MembroService = MembroServiceFactory(MembroRepository)
+const { MembroRepository } = require("../../../src/modules/RepositoriesModule")
+const { MembroService } = require('../../../src/modules/ServicesModule')
 
 const dadosDoMembro = {
     usuario_id: 'idUsuarioTeste',
@@ -22,10 +19,9 @@ describe('Testando o MembroService ao', () => {
         })
 
         it('com erro ao criar membro duplicado', async () => {
-            const MembroRepositoryMock = { criar: jest.fn().mockRejectedValue({ tipo: 'Violação única', campo: 'usuario_id' }) }
-            const MembroServiceMock = MembroServiceFactory(MembroRepositoryMock)
+            await MembroService.criar(dadosDoMembro)
 
-            const funcaoComErro = async () => await MembroServiceMock.criar(dadosDoMembro)
+            const funcaoComErro = async () => await MembroService.criar(dadosDoMembro)
 
             await expect(funcaoComErro).rejects.toEqual({ statusCode: 400, message: 'Já existe um membro com esses dados' })
         })

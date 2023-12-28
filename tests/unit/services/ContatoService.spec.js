@@ -1,8 +1,5 @@
-const ContatoServiceFactory = require("../../../src/services/ContatoService")
-const RepositoryInMemory = require('../../../src/repository/RepositoryInMemory')
-
-const ContatoRepository = RepositoryInMemory()
-const ContatoService = ContatoServiceFactory(ContatoRepository)
+const { ContatoRepository } = require("../../../src/modules/RepositoriesModule")
+const { ContatoService } = require('../../../src/modules/ServicesModule')
 
 const dadosDoContato = {
     nome: 'Nome do contato',
@@ -22,10 +19,9 @@ describe('Testando o ContatoService ao', () => {
         })
 
         it('com erro ao criar contato duplicado', async () => {
-            const ContatoRepositoryMock = { criar: jest.fn().mockRejectedValue({ tipo: 'Violação única', campo: 'usuario_id' }) }
-            const ContatoServiceMock = ContatoServiceFactory(ContatoRepositoryMock)
+            await ContatoService.criar(dadosDoContato)
 
-            const funcaoComErro = async () => await ContatoServiceMock.criar(dadosDoContato)
+            const funcaoComErro = async () => await ContatoService.criar(dadosDoContato)
 
             await expect(funcaoComErro).rejects.toEqual({ statusCode: 400, message: 'Já existe um contato com esses dados' })
         })

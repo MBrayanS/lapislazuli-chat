@@ -1,8 +1,5 @@
-const UsuarioServiceFactory = require('../../../src/services/UsuarioService')
-const RepositoryInMemory = require('../../../src/repository/RepositoryInMemory')
-
-const UsuarioRepository = RepositoryInMemory()
-const UsuarioService = UsuarioServiceFactory(UsuarioRepository)
+const { UsuarioRepository } = require("../../../src/modules/RepositoriesModule")
+const { UsuarioService } = require('../../../src/modules/ServicesModule')
 
 const dadosDoUsuario = {
     nome: 'Usuario teste',
@@ -23,10 +20,9 @@ describe('Testando o UsuarioService ao', () => {
         })
 
         it('com erro de email duplicado', async () => {
-            const UsuarioRepositoryMock = { criar: jest.fn().mockRejectedValue({ tipo: 'Violação única', campo: 'email' }) }
-            const UsuarioServiceMock = UsuarioServiceFactory(UsuarioRepositoryMock)
+            await UsuarioService.criar(dadosDoUsuario)
 
-            const funcaoComErro = async () => await UsuarioServiceMock.criar(dadosDoUsuario)
+            const funcaoComErro = async () => await UsuarioService.criar(dadosDoUsuario)
 
             await expect(funcaoComErro).rejects.toEqual({ statusCode: 400, message: 'Este email já esta em uso' })
         })
