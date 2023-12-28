@@ -6,4 +6,4 @@ require('../models/MembroEntity')
 require('../models/MensagemEntity')
 require('../models/UsuarioEntity')
 
-module.exports = () => sequelize.sync({ alter: true })
+module.exports = () => sequelize.sync({ force: true })
