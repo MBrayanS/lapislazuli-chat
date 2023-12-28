@@ -6,7 +6,11 @@ class Repository {
     }
     
     async criar( dados ) {
-        try { return await this.#Entity.create(dados) }
+        try {
+            const resultado = await this.#Entity.create(dados)
+
+            return resultado.get({ plain: true })
+        }
             
         catch( erro ) {
             if( erro?.errors[0]?.type == 'unique violation' ) throw { tipo: 'Violação única', campo: erro.errors[0].path }
@@ -16,11 +20,17 @@ class Repository {
     }
 
     async pegar( dados ) {
-        return await this.#Entity.findOne({ where: dados })
+        const resultado = await this.#Entity.findOne({ where: dados })
+        
+        if( !resultado ) return null
+        
+        return resultado.get({ plain: true })
     }
 
     async pegarTodos( dados ) {
-        return await this.#Entity.findAll({ where: dados })
+        const resultados = await this.#Entity.findAll({ where: dados })
+ 
+        return resultados.map( resultado => resultado.get({ plain: true }) )
     }
 
     async apagar( dados ) {
