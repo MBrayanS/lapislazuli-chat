@@ -17,12 +17,13 @@
             <form>
     
                 <label for="loginNome"> Nome: 
-                    <input type="text" id="loginNome" name="loginNome" placeholder="Insira seu nome" minlength="3" required>
+                    <input type="text" id="loginNome" name="loginNome" placeholder="Insira seu nome" minlength="3" required title="Os dados de nome ou senha estão incorretos. Por favor, verifique suas credenciais e tente novamente." autocomplete="username">
+
                 </label>
     
                 <label for="loginSenha"> Senha:
-                    <input type="password" id="loginSenha" name="loginSenha" placeholder="Insira sua senha" minlength="8" required>
-                    <a href="redefinirSenha">Esqueceu sua senha?</a>
+                    <input type="password" id="loginSenha" name="loginSenha" placeholder="Insira sua senha" minlength="8" required pattern="^(?=.*\d)(?=.*[!@#$%^&*]).{8,}$" title="Os dados de nome ou senha estão incorretos. Por favor, verifique suas credenciais e tente novamente." autocomplete="current-password">
+
                 </label>
     
                 <button class="enviar" type="submit">Logar</button>
