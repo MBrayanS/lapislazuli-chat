@@ -1,4 +1,4 @@
-const { Op } = require("sequelize")
+const sequelize = require("sequelize")
 const Repository = require("./Repository")
 
 class UsuarioRepository extends Repository {
@@ -11,7 +11,10 @@ class UsuarioRepository extends Repository {
     }
 
     async buscarPorNome( nome ) {
-        return await this.#Entity.findAll({ where: { nome: { [Op.iLike]: `%${nome}%`} } })
+        const where = sequelize.where( sequelize.fn('LOWER', sequelize.col('nome')), 'LIKE', `%${nome.toLowerCase()}%` )
+        const resultados = await this.#Entity.findAll({ where }) 
+
+        return resultados.map( resultado => resultado.get({ plain: true }) )
     }
 
 }
