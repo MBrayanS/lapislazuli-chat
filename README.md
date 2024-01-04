@@ -75,18 +75,6 @@ O código deste repositório está livre para ser clonado e usado por qualquer p
 
 <br>
 
-## 📚 Documentação
-
- Você pode conferir a documentação do backend [neste arquivo](/docs/documentacao.md).
-
-<br>
-
-<p align="right"> <a href="#topo">⬆️ Voltar ao topo ⬆️ </a> </p>
-
-***
-
-<br>
-
 ## 🎨 layout
 
 O design desse projeto foi criado no **Figma**, inspirado em redes sociais como o **WhatsApp**. E você pode acessa-lo através [deste link][figma-design-url].
@@ -103,6 +91,18 @@ O design desse projeto foi criado no **Figma**, inspirado em redes sociais como 
   <img width="200px" src="./images/Screenshot-mobile-01.png">
   <img width="200px" src="./images/Screenshot-mobile-02.png">
 </div>
+
+<br>
+
+<p align="right"> <a href="#topo">⬆️ Voltar ao topo ⬆️ </a> </p>
+
+***
+
+<br>
+
+## 📚 Documentação
+
+ Você pode conferir a documentação do backend [neste arquivo](/docs/documentacao.md).
 
 <br>
 
@@ -152,15 +152,17 @@ E após isso basta seguir os comandos:
 ```bash
 
 # Clone este repositório
-$ git clone 
+$ git clone https://github.com/MBrayanS/lapislazuli-chat.git
 
-# Instale as dependências
+# Instale as dependências e execute a aplicação em modo de desenvolvimento com
 $ npm install
-
-# Execute a aplicação em modo de desenvolvimento
 $ npm run dev
 
-# O servidor inciará na porta:3000 - acesse http://localhost:3000 
+# Ou se você estiver usando yarn
+$ yarn 
+$ yarn run dev
+
+# E no terminal irá aparecer a porta em que está rodando o projeto.
 
 ```
 
@@ -243,6 +245,6 @@ Este projeto esta sobe a licença [MIT][license-url].
 [node-url]: https://nodejs.org/en
 [padrao-de-commit-url]: https://github.com/MBrayanS/lapislazuli-chat/blob/main/docs/padrao-de-commit.md
 
-[contributors-shield]: https://img.shields.io/github/contributors/MBrayanS/lapislazuli-chat.svg.svg?style=for-the-badge
+[contributors-shield]: https://img.shields.io/github/contributors/MBrayanS/lapislazuli-chat.svg?style=for-the-badge
 [issues-shield]: https://img.shields.io/github/issues/MBrayanS/lapislazuli-chat.svg?style=for-the-badge
-[license-shield]: https://img.shields.io/github/license/MBrayanS/lapislazuli-chat.svg.svg?style=for-the-badge
+[license-shield]: https://img.shields.io/github/license/MBrayanS/lapislazuli-chat.svg?style=for-the-badge
