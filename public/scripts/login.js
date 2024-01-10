@@ -1,35 +1,18 @@
-const enviarForm = document.querySelector('form')
+const formulario = document.querySelector('form')
 
-enviarForm.addEventListener('submit', enviarRequisicao)
+formulario.addEventListener('submit', coletarDadosDeLogin)
 
-function enviarRequisicao(evento){
+function coletarDadosDeLogin( evento ) {
+    evento.preventDefault()
 
-  evento.preventDefault()
+    const { emailInput, senhaInput } = formulario
 
-  const nomeInput = document.getElementById('loginNome');
-  const senhaInput = document.getElementById('loginSenha');
+    const dadosDoFormulario = {
+        email: emailInput.value,
+        senha: senhaInput.value,
+    }
 
-  const dadosLogin = {
-    nome: nomeInput.value,
-    senha: senhaInput.value
-  }
-  enviarDadosLogin(dadosLogin)
+    const rota = window.location.origin + '/api/logar'
+
+    requisicaoPost(rota, dadosDoFormulario)
 }
-
-function enviarDadosLogin(dados){
-  fetch('',{
-    method: 'POST',
-    headers:{
-      'Content-Type':'application/json',
-    },
-    body: JSON.stringify(dados)
-  })
-  .then(response => response.json())
-  .then(data =>{
-    console.log('Resposta da Requisição', data);
-  })
-  .catch(error => {
-    console.log('Erro na requisição:', error);
-  })
-}
-
