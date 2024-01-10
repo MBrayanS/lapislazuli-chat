@@ -16,14 +16,20 @@
 
             <form>
     
-                <label for="loginNome"> Nome: 
-                    <input type="text" id="loginNome" name="loginNome" placeholder="Insira seu nome" minlength="3" required title="Os dados de nome ou senha estão incorretos. Por favor, verifique suas credenciais e tente novamente." autocomplete="username">
-
+                <label for="email">Email:
+                    <input type="email" id="email" name="emailInput" required
+                        placeholder="Insira seu email"
+                        pattern="[a-zA-z0-9._%+\-]+@[a-zA-z0-9.\-]+\.[a-z]{2,}$"
+                        title="Por favor, insira um e-mail válido"
+                    >
                 </label>
     
-                <label for="loginSenha"> Senha:
-                    <input type="password" id="loginSenha" name="loginSenha" placeholder="Insira sua senha" minlength="8" required pattern="^(?=.*\d)(?=.*[!@#$%^&*]).{8,}$" title="Os dados de nome ou senha estão incorretos. Por favor, verifique suas credenciais e tente novamente." autocomplete="current-password">
-
+                <label for="senha">Senha:
+                    <input type="password" id="senha" name="senhaInput" minlength="8" required 
+                        placeholder="Insira sua senha"
+                        pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$"
+                        title="Por favor, escolha uma senha incluindo letras, números e caracteres especiais. Tornará sua senha mais segura!"
+                    >
                 </label>
     
                 <button class="enviar" type="submit">Logar</button>
@@ -31,7 +37,7 @@
             </form>
     
             <p>Não tem uma conta?</p>
-            <a class="cadastre-se" href="cadastrar">Cadastre-se</a>
+            <a href="cadastrar">Cadastre-se</a>
 
         </div>
 
