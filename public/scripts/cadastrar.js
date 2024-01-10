@@ -13,8 +13,7 @@ function coletarDadosDeCadastro( evento ) {
     const dadosDoFormulario = {
         nome: nomeInput.value,
         email: emailInput.value,
-        senha: senhaInput.value,
-        confirmarSenha: confirmarSenhaInput.value
+        senha: senhaInput.value
     }
 
     const rota = window.location.origin + '/api/cadastrar'
