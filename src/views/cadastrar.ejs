@@ -4,6 +4,7 @@
 <head>
     <%- include('./componentes/head') %>
     <link rel="stylesheet" href="/style/cadastrar.css">
+    <script src="/scripts/cadastrar.js" defer></script>
     <title>Cadastrar</title>
 </head>
 
@@ -15,22 +16,42 @@
 
             <form>
                 <label for="nome">Nome:
-                    <input type="text" id="nome" name="nome" required placeholder="Insira seu nome">
+                    <input type="text" id="nome" name="nomeInput" required minlength="3"
+                        placeholder="Insira seu nome"
+                        maxlength="20"
+                        title="Nome de usuário deve ter entre 3 e 20 caracteres"
+                    >
                 </label>
 
                 <label for="email">Email:
-                    <input type="email" id="email" name="email" required placeholder="Insira seu email">
+                    <input type="email" id="email" name="emailInput" required
+                        placeholder="Insira seu email"
+                        pattern="[a-zA-z0-9._%+\-]+@[a-zA-z0-9.\-]+\.[a-z]{2,}$"
+                        title="Por favor, insira um e-mail válido"
+                    >
                 </label>
 
-                <label for="senha">Senha
-                    <input type="password" id="senha" name="senha" required minlength="8" required placeholder="Insira sua senha">
+                <label for="senha">Senha:
+                    <input type="password" id="senha" name="senhaInput" minlength="8" required 
+                        placeholder="Insira sua senha"
+                        pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$"
+                        title="Por favor, escolha uma senha incluindo letras, números e caracteres especiais. Tornará sua senha mais segura!"
+                    >
                 </label>
 
-                <button class="enviar">Cadastrar</button>
+                <label for="confirmarSenha">Confirmar Senha:
+                    <input type="password" id="confirmarSenha" name="confirmarSenhaInput" minlength="8" required
+                        placeholder="Insira sua senha"
+                        pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*]).*$"
+                        title="Por favor, escolha uma senha incluindo letras, números e caracteres especiais. Tornará sua senha mais segura!"
+                    >
+                </label>
+
+                <button type="submit" class="enviar">Cadastrar</button>
             </form>
 
-            <p>Não tem uma conta?</p>
-            <a class="cadastre-se" href="login">Faça login</a>
+            <p>Já possui uma conta?</p>
+            <a href="login">Faça login</a>
         </div>
 
     </section>
