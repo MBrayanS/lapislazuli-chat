@@ -1,10 +1,10 @@
 const rotas = require('express').Router()
-const ViewController = require('../controllers/ViewController.js')
+const PaginasMiddlewares = require('../app/middlewares/PaginasMiddlewares')
 
-rotas.get('/', ViewController.home)
-rotas.get('/login', ViewController.login)
-rotas.get('/cadastrar', ViewController.cadastrar)
-rotas.get('/confirmarEmail', ViewController.confirmarEmail)
-rotas.get('/redefinirSenha', ViewController.redefinirSenha)
+rotas.get('/', PaginasMiddlewares.principal)
+rotas.get('/login', PaginasMiddlewares.login)
+rotas.get('/cadastrar', PaginasMiddlewares.cadastrar)
+rotas.get('/confirmarEmail', PaginasMiddlewares.confirmarEmail)
+rotas.get('/redefinirSenha', PaginasMiddlewares.redefinirSenha)
 
 module.exports = rotas

@@ -1,5 +1,5 @@
-const sequelize = require("sequelize")
-const Repository = require("./Repository")
+const sequelize = require('../../database/sequelize.js')
+const Repository = require('./Repository.js')
 
 class UsuarioRepository extends Repository {
     #Entity

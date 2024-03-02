@@ -1,7 +1,9 @@
+const rotas = require('express').Router()
+
 const rotasApi = require('./rotasApi')
 const rotasView = require('./rotasView')
 
-module.exports = async app => {
-    app.use('/api', rotasApi)
-    app.use(rotasView)
-}
+rotas.use('/api', rotasApi)
+rotas.use(rotasView)
+
+module.exports = rotas
