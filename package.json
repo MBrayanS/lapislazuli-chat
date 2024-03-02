@@ -2,7 +2,7 @@
   "name": "chat-online",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js --ext js,ejs,css",
     "scss": "node-sass src/app/scss -o public/style/ --output-style compressed -w *scss",
