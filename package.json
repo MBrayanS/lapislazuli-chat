@@ -5,7 +5,7 @@
   "main": "src/server.js",
   "scripts": {
     "dev": "nodemon src/server.js --ext js,ejs,css",
-    "scss": "node-sass src/app/scss -o public/style/ --output-style compressed -w *scss",
+    "scss": "node-sass src/app/scss -o public/style/ --output-style expanded -w *scss",
     "test": "jest --detectOpenHandles",
     "test:unit": "jest ./tests/unit --detectOpenHandles",
     "test:integration": "jest ./tests/integration --detectOpenHandles"

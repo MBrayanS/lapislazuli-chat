@@ -1,1 +1,65 @@
-.cadastrar{background:radial-gradient(at top,#1E77FC 0%,#232198 60%,#010440 100%);display:grid;align-items:center;width:100vw;min-height:100vh}.cadastrar .formulario{background-color:#050259;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.8rem;margin:0 auto;padding:6rem 7.2rem 6rem}.cadastrar .formulario .titulo{color:#D9C8FF;margin-bottom:3.2rem;font-size:3.2rem;text-transform:uppercase}.cadastrar .formulario form{display:grid;gap:1.6rem}.cadastrar .formulario form label,.cadastrar .formulario form input{font-size:1.8rem}.cadastrar .formulario form label{display:grid;gap:1rem}.cadastrar .formulario form label input{color:#181818;background-color:#D9C8FF;width:28.8rem;outline:none;border:none;border-radius:.6rem;padding:.4rem .8rem}.cadastrar .formulario form .enviar{color:#fff;background-color:#1E77FC;width:100%;margin-top:6.4rem;padding:1.2rem 0;border:none;border-radius:.8rem;text-align:center;font-size:2.6rem;cursor:pointer}.cadastrar .formulario form .enviar:hover{background-color:#035de4}.cadastrar .formulario form .enviar:active{background-color:#1974fc;transform:translateY(0.1rem)}.cadastrar .formulario p,.cadastrar .formulario a{font-size:1.4rem;font-weight:600}.cadastrar .formulario p{margin-top:2.4rem}.cadastrar .formulario a{color:#1E77FC;text-decoration:none}@media screen and (max-width: 650px){.cadastrar .formulario{width:100%}}
+.cadastrar {
+  background: radial-gradient(at top, #1E77FC 0%, #232198 60%, #010440 100%);
+  display: grid;
+  align-items: center;
+  width: 100vw;
+  min-height: 100vh; }
+  .cadastrar .formulario {
+    background-color: #050259;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .8rem;
+    margin: 0 auto;
+    padding: 6rem 7.2rem 6rem; }
+    .cadastrar .formulario .titulo {
+      color: #D9C8FF;
+      margin-bottom: 3.2rem;
+      font-size: 3.2rem;
+      text-transform: uppercase; }
+    .cadastrar .formulario form {
+      display: grid;
+      gap: 1.6rem; }
+      .cadastrar .formulario form label, .cadastrar .formulario form input {
+        font-size: 1.8rem; }
+      .cadastrar .formulario form label {
+        display: grid;
+        gap: 1rem; }
+        .cadastrar .formulario form label input {
+          color: #181818;
+          background-color: #D9C8FF;
+          width: 28.8rem;
+          outline: none;
+          border: none;
+          border-radius: .6rem;
+          padding: .4rem .8rem; }
+      .cadastrar .formulario form .enviar {
+        color: #fff;
+        background-color: #1E77FC;
+        width: 100%;
+        margin-top: 6.4rem;
+        padding: 1.2rem 0;
+        border: none;
+        border-radius: .8rem;
+        text-align: center;
+        font-size: 2.6rem;
+        cursor: pointer; }
+        .cadastrar .formulario form .enviar:hover {
+          background-color: #035de4; }
+        .cadastrar .formulario form .enviar:active {
+          background-color: #1974fc;
+          transform: translateY(0.1rem); }
+    .cadastrar .formulario p, .cadastrar .formulario a {
+      font-size: 1.4rem;
+      font-weight: 600; }
+    .cadastrar .formulario p {
+      margin-top: 2.4rem; }
+    .cadastrar .formulario a {
+      color: #1E77FC;
+      text-decoration: none; }
+
+@media screen and (max-width: 650px) {
+  .cadastrar .formulario {
+    width: 100%; } }
