@@ -195,14 +195,12 @@ E caso tenha sobrado alguma dúvida, você pode entrar em contato [comigo](https
 
 <br>
 
-## 👨‍💻 Colaboradores
+## 👨‍💻 Contribuidores
 
 <table>
   <tr>
     <td align="center"> <a href="https://github.com/Hugo-Henrique7"> <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/118087594?v=4" width="100px;"/> <br> <b> Hugo-Henrique7 </b> </a> </td>
-    <td align="center"> <a href="https://github.com/wesleychiste"> <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/76197169?v=4" width="100px;"/> <br> <b> wesleychiste </b> </a> </td>
-    <td align="center"> <a href="https://github.com/vicentecarlos"> <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/81314892?v=4" width="100px;"/> <br> <b> VicenteCarlos </b> </a> </td>
-    <td align="center"> <a href="https://github.com/jaeger-lucas"> <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/38478795?v=4" width="100px;"/> <br> <b> Lucas Jaeger </b> </a> </td>
+    <td align="center"> <a href="https://github.com/joaopedrokleinprevidi"> <img style="border-radius: 50%;" src="https://avatars.githubusercontent.com/u/139821903?v=4" width="100px;"/> <br> <b> joaopedrokleinprevidi </b> </a> </td>
   </tr>
 </table>
 
